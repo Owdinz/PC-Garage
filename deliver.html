@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PC-Garage | Order Status</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="auth-guard.js" defer></script>
+</head>
+<body>
+
+    <!-- SITE HEADER -->
+    <header class="site-header">
+        <a href="home.html" class="brand" aria-label="PC-Garage home">
+            <span class="brand-mark">&#9670;</span>
+            <span class="brand-name">PC-GARAGE</span>
+            <small>SINCE 2020</small>
+        </a>
+        <nav class="main-nav" aria-label="Primary navigation">
+            <details class="menu-dropdown">
+                <summary class="menu-toggle">Menu</summary>
+                <div class="menu-links">
+                    <a href="home.html">Home</a>
+                    <a href="product.html">Products</a>
+                    <a href="shop-filtered.html">Filtered Shop</a>
+                    <a href="custom.html">Custom Build</a>
+                    <a href="about.html">About Us</a>
+                    <a href="buy-sell.html">Buy and Sell</a>
+                    <a href="cart.html">Cart</a>
+                    <a href="deliver.html" class="active">Order Status</a>
+                    <a href="profile.html">Profile</a>
+                </div>
+            </details>
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="order-container">
+        <div class="checkout-subtitle">CHECKOUT</div>
+        <h1 class="page-title">YOUR ORDER</h1>
+
+        <!-- PROGRESS STEPPER -->
+        <div class="stepper">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-label">Cart</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step active">
+                <div class="step-number">2</div>
+                <div class="step-label">Details</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step active">
+                <div class="step-number">3</div>
+                <div class="step-label">Payment</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step active">
+                <div class="step-number">4</div>
+                <div class="step-label">Deliver</div>
+            </div>
+        </div>
+
+        <!-- MAP TRACKING CONTAINER WITH GOOGLE MAP & OVERLAYS -->
+        <div class="map-card">
+            <!-- Google Map iFrame Background -->
+            <iframe 
+                src="https://maps.google.com/maps?q=32.2681,-112.7437&z=13&output=embed" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+
+        <!-- ESTIMATED DELIVERY TIME -->
+        <div class="eta-text">
+            Estimated Time of Arrival: Date order + 3-5 Calendar days.
+        </div>
+
+        <!-- INFORMATION CARDS GRID -->
+        <div class="info-grid">
+            <!-- Contact Card -->
+            <div class="info-card">
+                <div class="info-row">
+                    <span class="label">Email:</span>
+                    <span class="value">PCGarage@gmail.com</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Phone Number:</span>
+                    <span class="value">+639234567891</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Facebook:</span>
+                    <span class="value">PC-Garage</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">Instagram:</span>
+                    <span class="value">PC-Garage</span>
+                </div>
+            </div>
+
+            <!-- Driver & Transport Card -->
+            <div class="info-card driver-card">
+                <div class="driver-avatar">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFagRXJe_OHgfaK08SpBv93McuWG1X0r6hwUYJ2ws1jA&s=10"
+                        alt="Driver Avatar"
+                     class="driver-avatar-img">
+                </div>  
+                <div class="driver-details">
+                    <div class="info-row">
+                        <span class="label">Delivery Transport:</span>
+                        <span class="value">JTExpress</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Profile:</span>
+                        <span class="value">Parkinson Dan Taning</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Origin Location:</span>
+                        <span class="value">Why AZ, USA PCGarage</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="label">Contact Number:</span>
+                        <span class="value">09351235123</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-columns">
+            <div class="footer-col brand-col">
+                <h2 class="footer-brand">PCGarage</h2>
+                <p>Premium custom gaming rigs and PC components built for enthusiasts.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Shop</h3>
+                <a href="custom.html">Custom Gaming PCs</a>
+                <a href="product.html">Pre-Built Workstations</a>
+                <a href="shop-filtered.html">PC Components</a>
+            </div>
+            <div class="footer-col">
+                <h3>Support</h3>
+                <a href="about.html">Help Center & FAQs</a>
+                <a href="login.html">Track Your Order</a>
+                <a href="about.html">Shipping & Returns</a>
+            </div>
+            <div class="footer-col">
+                <h3>Company</h3>
+                <a href="about.html">About PCGarage</a>
+                <a href="about.html">Careers</a>
+                <a href="about.html">Contact Us</a>
+            </div>
+        </div>
+        <div class="legal">&copy; 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences</div>
+    </footer>
+
+</body>
+</html>

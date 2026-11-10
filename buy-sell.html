@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PC-Garage | Buy, Sell & Trade-In</title>
+  <link rel="stylesheet" href="stylesheet.css" />
+  <script src="auth-guard.js" defer></script>
+</head>
+<body class="trade-in-page">
+  <header class="site-header">
+    <a class="brand" href="home.html" aria-label="PC-Garage home">
+      <span class="brand-mark">&#9670;</span>
+      <span class="brand-name">PC-GARAGE</span>
+      <small>PC COMPONENTS</small>
+    </a>
+
+    <nav class="main-nav" aria-label="Primary navigation">
+      <details class="menu-dropdown">
+        <summary class="menu-toggle">Menu</summary>
+        <div class="menu-links">
+          <a href="home.html">Home</a>
+          <a href="product.html">Products</a>
+          <a href="shop-filtered.html">Filtered Shop</a>
+          <a href="custom.html">Custom Build</a>
+          <a href="about.html">About Us</a>
+          <a href="buy-sell.html" class="active">Buy &amp; Sell</a>
+          <a href="cart.html">Cart</a>
+          <a href="profile.html">Profile</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <main class="trade-container">
+    <section class="trade-hero">
+      <h1>TRADE-IN &amp; SELL YOUR HARDWARE</h1>
+      <p>Upgrade your gaming rig by trading in your old GPUs, CPUs, and RAM for store credit or instant payouts.</p>
+    </section>
+
+    <div class="trade-grid">
+      <!-- Submission Form -->
+      <section class="trade-form-card">
+        <h2>Submit Hardware Details</h2>
+        <form id="tradeForm" onsubmit="handleTradeSubmit(event)">
+          <div class="form-group">
+            <label for="category">Component Category</label>
+            <select id="category" required>
+              <option value="">Select Category...</option>
+              <option value="gpu">Graphics Card (GPU)</option>
+              <option value="cpu">Processor (CPU)</option>
+              <option value="ram">RAM / Memory</option>
+              <option value="storage">SSD / Storage</option>
+              <option value="motherboard">Motherboard</option>
+              <option value="power">Power Supply (PSU)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="partName">Exact Model Name</label>
+            <input type="text" id="partName" placeholder="e.g., NVIDIA RTX 3070 8GB Founders Edition" required />
+          </div>
+
+          <div class="form-group">
+            <label for="condition">Hardware Condition</label>
+            <select id="condition" required>
+              <option value="like-new">Like New (With Original Packaging)</option>
+              <option value="good">Good (Lightly Used, Fully Functional)</option>
+              <option value="fair">Fair (Visible Wear, Fully Functional)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="expectedPrice">Estimated Value (₱)</label>
+            <input type="number" id="expectedPrice" min="500" placeholder="8500" required />
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Additional Information / Image URL</label>
+            <textarea id="notes" rows="3" placeholder="Provide working status, benchmark scores, or image URLs..."></textarea>
+          </div>
+
+          <button type="submit" class="home-button">Submit for Appraisal</button>
+        </form>
+      </section>
+
+      <!-- User Active Listings / Trade History -->
+      <section class="trade-status-card">
+        <h2>Your Active Trade Requests</h2>
+        <div class="trade-list" id="tradeList">
+          <div class="trade-item">
+            <div class="trade-info">
+              <strong>ASUS ROG Strix RTX 2070 Super</strong>
+              <small>Submitted on Nov 02, 2026 • Status: <span class="badge pending">Under Review</span></small>
+            </div>
+            <div class="trade-price">₱10,000.00</div>
+          </div>
+          <div class="trade-item">
+            <div class="trade-info">
+              <strong>AMD Ryzen 5 3600X</strong>
+              <small>Submitted on Oct 18, 2026 • Status: <span class="badge approved">Accepted (₱4,800.00 Credit)</span></small>
+            </div>
+            <div class="trade-price">₱4,800.00</div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <h2>PCGarage</h2>
+      <p>Premium custom gaming rigs and PC components built for enthusiasts.</p>
+    </div>
+    <div>
+      <h3>Shop</h3>
+      <a href="custom.html">Custom Gaming PCs</a>
+      <a href="product.html">Pre-Built Workstations</a>
+      <a href="shop-filtered.html">PC Components</a>
+    </div>
+    <div>
+      <h3>Support</h3>
+      <a href="about.html">Help Center &amp; FAQs</a>
+      <a href="deliver.html">Track Your Order</a>
+      <a href="about.html">Shipping &amp; Returns</a>
+    </div>
+    <div>
+      <h3>Company</h3>
+      <a href="about.html">About PCGarage</a>
+      <a href="about.html">Careers</a>
+      <a href="about.html">Contact Us</a>
+    </div>
+  </footer>
+  <div class="legal">&copy; 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences</div>
+
+  <script>
+    function handleTradeSubmit(e) {
+      e.preventDefault();
+      alert("Trade-in request submitted! Our hardware technician will inspect your item details within 24 hours.");
+      document.getElementById('tradeForm').reset();
+    }
+  </script>
+</body>
+</html>

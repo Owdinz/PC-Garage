@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PC-Garage | Checkout</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  <script src="auth-guard.js" defer></script>
+  <script src="cart-manager.js" defer></script>
+  <script src="checkout.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="home.html" aria-label="PC-Garage home">
+      <span class="brand-mark">&#9670;</span>
+      <span class="brand-name">PC-GARAGE</span>
+      <small>SINCE 2020</small>
+    </a>
+    <nav class="main-nav" aria-label="Primary navigation">
+      <details class="menu-dropdown">
+        <summary class="menu-toggle">Menu</summary>
+        <div class="menu-links">
+          <a href="home.html">Home</a>
+          <a href="product.html">Products</a>
+          <a href="shop-filtered.html">Filtered Shop</a>
+          <a href="custom.html">Custom Build</a>
+          <a href="about.html">About Us</a>
+          <a href="buy-sell.html">Buy and Sell</a>
+          <a href="cart.html">Cart</a>
+          <a href="profile.html">Profile</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <main class="checkout">
+    <h1>Checkout</h1>
+    <form id="checkout-form">
+      <div class="checkout-columns">
+        <div class="customer-column">
+          <section aria-labelledby="customer-title">
+            <h2 id="customer-title">Customer Information</h2>
+            <div class="input-panel">
+              <label for="full-name">FULL NAME</label>
+              <input id="full-name" name="fullName" autocomplete="name" placeholder="John Doe" required>
+
+              <label for="contact">CONTACT NUMBER</label>
+              <input id="contact" name="contact" type="tel" autocomplete="tel" placeholder="09145125123" required>
+
+              <label for="email">EMAIL ADDRESS</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="john.doe@gmail.com" required>
+            </div>
+          </section>
+
+          <section aria-labelledby="shipping-title">
+            <h2 id="shipping-title">Shipping Info</h2>
+            <div class="input-panel">
+              <label for="address">COMPLETE ADDRESS</label>
+              <input id="address" name="address" autocomplete="street-address" placeholder="14 BATUMBAKAL ST. MANILA PHILIPPINES" required>
+
+              <label for="postal">POSTAL CODE</label>
+              <input id="postal" name="postalCode" autocomplete="postal-code" inputmode="numeric" placeholder="1000" required>
+
+              <label class="notes-label" for="notes">DELIVERY NOTES</label>
+              <textarea id="notes" name="notes" rows="2" placeholder="e.g. Leave with guard if unavailable"></textarea>
+            </div>
+          </section>
+        </div>
+
+        <div class="methods-column">
+          <fieldset>
+            <legend>Shipping Method</legend>
+            <div class="option-grid shipping-options">
+              <label class="option"><input type="radio" name="shippingMethod" value="standard" checked><span>Standard Delivery</span></label>
+              <label class="option"><input type="radio" name="shippingMethod" value="express"><span>Express Delivery</span></label>
+              <label class="option"><input type="radio" name="shippingMethod" value="pickup"><span>Store Pickup</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>Payment Method</legend>
+            <div class="option-grid payment-options">
+              <label class="option"><input type="radio" name="paymentMethod" value="cod" checked><span>Cash On Delivery<small>Pay when received</small></span></label>
+              <label class="option"><input type="radio" name="paymentMethod" value="gcash"><span>GCash / Maya<small>Secure e-wallet payment</small></span></label>
+              <label class="option"><input type="radio" name="paymentMethod" value="card"><span>Debit / Credit Card<small>Pay securely via card</small></span></label>
+              <label class="option"><input type="radio" name="paymentMethod" value="wallet"><span>PCGarage Wallet<small>Receive tokens and vouchers</small></span></label>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <section class="orders" aria-labelledby="orders-title">
+        <h2 id="orders-title">YOUR ORDERS</h2>
+        <div class="order-list">
+
+          <article class="order-item" data-name="NVIDIA GeForce RTX 5090" data-price="426509.00">
+            <div class="item-details">
+              <p><span>ITEM:</span> NVIDIA GeForce RTX 5090</p>
+              <p><span>PRICE:</span> ₱426,509.00</p>
+            </div>
+            <div class="item-actions">
+              <input type="number" class="quantity" min="1" max="99" value="1" aria-label="Quantity for NVIDIA GeForce RTX 5090">
+              <button type="button" class="delete-button" aria-label="Delete NVIDIA GeForce RTX 5090">DELETE</button>
+            </div>
+          </article>
+
+          <article class="order-item" data-name="Deepcool Wind Blade 120mm" data-price="990.00">
+            <div class="item-details">
+              <p><span>ITEM:</span> Deepcool Wind Blade 120mm</p>
+              <p><span>PRICE:</span> ₱990.00</p>
+            </div>
+            <div class="item-actions">
+              <input type="number" class="quantity" min="1" max="99" value="6" aria-label="Quantity for Deepcool Wind Blade 120mm">
+              <button type="button" class="delete-button" aria-label="Delete Deepcool Wind Blade 120mm">DELETE</button>
+            </div>
+          </article>
+
+          <article class="order-item" data-name="ASUS PRIME B760M-A WIFI Micro-ATX Motherboard" data-price="8967.00">
+            <div class="item-details">
+              <p><span>ITEM:</span> ASUS PRIME B760M-A WIFI Micro-ATX Motherboard</p>
+              <p><span>PRICE:</span> ₱8,967.00</p>
+            </div>
+            <div class="item-actions">
+              <input type="number" class="quantity" min="1" max="99" value="1" aria-label="Quantity for ASUS PRIME motherboard">
+              <button type="button" class="delete-button" aria-label="Delete ASUS PRIME motherboard">DELETE</button>
+            </div>
+          </article>
+
+          <article class="order-item" data-name="KINGSTON 8GB DDR4 3200MHZ FURY BEAST RAM" data-price="23600.00">
+            <div class="item-details">
+              <p><span>ITEM:</span> KINGSTON 8GB DDR4 3200MHZ FURY BEAST RAM</p>
+              <p><span>PRICE:</span> ₱23,600.00</p>
+            </div>
+            <div class="item-actions">
+              <input type="number" class="quantity" min="1" max="99" value="4" aria-label="Quantity for KINGSTON RAM">
+              <button type="button" class="delete-button" aria-label="Delete KINGSTON RAM">DELETE</button>
+            </div>
+          </article>
+
+          <article class="order-item" data-name="Intel® Core™ Ultra 9 285K Desktop Processor" data-price="40150.00">
+            <div class="item-details">
+              <p><span>ITEM:</span> Intel® Core™ Ultra 9 285K Desktop Processor</p>
+              <p><span>PRICE:</span> ₱40,150.00</p>
+            </div>
+            <div class="item-actions">
+              <input type="number" class="quantity" min="1" max="99" value="1" aria-label="Quantity for Intel Core Ultra 9 processor">
+              <button type="button" class="delete-button" aria-label="Delete Intel Core Ultra 9 processor">DELETE</button>
+            </div>
+          </article>
+
+          <p class="empty-cart" hidden>Your cart is empty. Add items before placing an order.</p>
+        </div>
+        <div style="border: 1px solid #666; border-radius: 6px; padding: 16px; margin-top: 16px; font-family: monospace;">
+          <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
+            <span>TOTAL ORDER AMOUNT:</span>
+            <span id="checkout-total-display">₱0.00</span>
+          </div>
+        </div>
+
+        <div class="checkout-actions">
+          <a class="action-button" href="cart.html">← GO BACK</a>
+          <button class="action-button" type="submit" id="secure-order">SECURE ORDER</button>
+        </div>
+        <p id="order-status" role="status" hidden></p>
+      </section>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-about">
+      <a href="home.html" class="footer-brand">PCGarage</a>
+      <p>Premium custom gaming rigs and<br>PC components built for<br>enthusiasts.</p>
+      <div class="social-links" aria-label="Social platforms">
+        <span aria-label="Facebook">f</span>
+        <span aria-label="LinkedIn">in</span>
+        <span aria-label="YouTube">▶</span>
+        <span aria-label="Instagram">◎</span>
+      </div>
+    </div>
+    <div class="footer-right">
+      <div class="footer-links">
+        <section>
+          <h2>Shop</h2>
+          <a href="custom.html">Custom Gaming PCs</a>
+          <a href="product.html">Pre-Built Workstations</a>
+          <a href="shop-filtered.html">PC Components</a>
+        </section>
+        <section>
+          <h2>Support</h2>
+          <a href="about.html">Help Center &amp; FAQs</a>
+          <a href="deliver.html">Track Your Order</a>
+          <a href="about.html">Shipping &amp; Returns</a>
+        </section>
+        <section>
+          <h2>Company</h2>
+          <a href="about.html">About PCGarage</a>
+          <a href="about.html">Careers</a>
+          <a href="about.html">Contact Us</a>
+        </section>
+      </div>
+      <p class="copyright">© 2026 PCGarage. All rights reserved. <span>| Privacy Policy | Terms of Service | Cookie Preferences</span></p>
+    </div>
+  </footer>
+  <!-- Toast Undo Notification -->
+<div id="toast-notification" class="toast-notification" role="status" aria-live="polite" hidden>
+  <span id="toast-message">Item removed from cart.</span>
+  <button type="button" id="undo-button" class="undo-button">UNDO</button>
+</div>
+</body>
+</html>
