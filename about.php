@@ -9,7 +9,7 @@
 <body>
 
     <header class="site-header">
-        <a href="home.html" class="brand">
+        <a href="home.php" class="brand">
             <span class="brand-mark">&#9670;</span>
             <span class="brand-name">PC-GARAGE</span>
             <small>SINCE 2020</small>
@@ -19,11 +19,11 @@
   <details class="menu-dropdown">
     <summary class="menu-toggle">Menu</summary>
     <div class="menu-links">
-      <a href="home.html">Home</a>
-      <a href="product.html">Products</a>
-      <a href="buy-sell.html">Buy and Sell</a>
+      <a href="home.php">Home</a>
+      <a href="product.php">Products</a>
+      <a href="buy-sell.php">Buy and Sell</a>
         <a class="profile-button" href="#">Profile</a>
-      <a class="cart-button" href="cart.html">Cart</a>
+      <a class="cart-button" href="cart.php">Cart</a>
     </div>
     </nav>
     </header>
@@ -80,21 +80,21 @@
         </div>
         <div>
             <h3>Shop</h3>
-            <a href="custom-build.html">Custom Gaming PCs</a>
-            <a href="product.html">Pre-Built Workstations</a>
-            <a href="shop-filtered.html">PC Components</a>
+            <a href="custom-build.php">Custom Gaming PCs</a>
+            <a href="product.php">Pre-Built Workstations</a>
+            <a href="shop-filtered.php">PC Components</a>
         </div>
         <div>
             <h3>Support</h3>
-            <a href="about.html">Help Center & FAQs</a>
-            <a href="login.html">Track Your Order</a>
-            <a href="about.html">Shipping & Returns</a>
+            <a href="about.php">Help Center & FAQs</a>
+            <a href="login.php">Track Your Order</a>
+            <a href="about.php">Shipping & Returns</a>
         </div>
         <div>
             <h3>Company</h3>
-            <a href="about.html">About PCGarage</a>
-            <a href="about.html">Careers</a>
-            <a href="about.html">Contact Us</a>
+            <a href="about.php">About PCGarage</a>
+            <a href="about.php">Careers</a>
+            <a href="about.php">Contact Us</a>
         </div>
     </footer>
     <div class="legal">&copy; 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences</div>

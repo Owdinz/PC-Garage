@@ -32,7 +32,7 @@ if (!empty($category)) {
 </head>
 <body class="home-page">
   <header class="site-header">
-    <a class="brand" href="home.html" aria-label="PC-GARAGE home">
+    <a class="brand" href="home.php" aria-label="PC-GARAGE home">
       <span class="brand-mark">&#9670;</span>
       <span class="brand-name">PC-GARAGE</span>
       <small>PC COMPONENTS</small>
@@ -42,13 +42,13 @@ if (!empty($category)) {
         <summary class="menu-toggle">Menu</summary>
         <div class="menu-links">
           <a href="home.php" class="active">Home</a>
-          <a href="product.html">Products</a>
+          <a href="product.php">Products</a>
           <a href="category.php">Filtered Shop</a>
-          <a href="custom.html">Custom Build</a>
-          <a href="about.html">About Us</a>
-          <a href="buy-sell.html">Buy and Sell</a>
-          <a href="cart.html">Cart</a>
-          <a href="profile.html">Profile</a>
+          <a href="custom.php">Custom Build</a>
+          <a href="about.php">About Us</a>
+          <a href="buy-sell.php">Buy and Sell</a>
+          <a href="cart.php">Cart</a>
+          <a href="profile.php">Profile</a>
         </div>
       </details>
     </nav>
@@ -61,7 +61,7 @@ if (!empty($category)) {
         <p>Subheading that sets up context, shares more info about the website, or generally gets people psyched to keep scrolling.</p>
         <div class="hero-actions">
         <a class="home-button" href="#categories">SHOP PARTS</a>
-        <a class="home-button" href="custom.html">CUSTOM BUILD</a>
+        <a class="home-button" href="custom.php">CUSTOM BUILD</a>
       </div>
       </div>
       <div class="home-hero-image">
@@ -117,7 +117,7 @@ if (!empty($category)) {
       <div class="custom-copy">
         <h2>CUSTOM BUILD<br />EXPERIENCE</h2>
         <p>Elevated, curated, and thoughtfully designed with experience in every detail. Choose your components, get expert advice, and create a build that fits your style.</p>
-        <a class="home-button" href="custom.html">START BUILD</a>
+        <a class="home-button" href="custom.php">START BUILD</a>
       </div>
       <div class="custom-benefits">
         <div><strong>6 Month<br />Warranty</strong><small>Parts and labor covered</small></div>
@@ -134,21 +134,21 @@ if (!empty($category)) {
     </div>
     <div>
       <h3>Shop</h3>
-      <a href="custom.html">Custom Gaming PCs</a>
-      <a href="product.html">Pre-Built Workstations</a>
-      <a href="shop-filtered.html">PC Components</a>
+      <a href="custom.php">Custom Gaming PCs</a>
+      <a href="product.php">Pre-Built Workstations</a>
+      <a href="shop-filtered.php">PC Components</a>
     </div>
     <div>
       <h3>Support</h3>
-      <a href="about.html">Contact Here &amp; FAQs</a>
-      <a href="deliver.html">Track Your Order</a>
-      <a href="about.html">Shipping &amp; Returns</a>
+      <a href="about.php">Contact Here &amp; FAQs</a>
+      <a href="deliver.php">Track Your Order</a>
+      <a href="about.php">Shipping &amp; Returns</a>
     </div>
     <div>
       <h3>Company</h3>
-      <a href="about.html">About PCGarage</a>
-      <a href="about.html">Careers</a>
-      <a href="about.html">Contact Us</a>
+      <a href="about.php">About PCGarage</a>
+      <a href="about.php">Careers</a>
+      <a href="about.php">Contact Us</a>
     </div>
   </footer>
 
