@@ -90,3 +90,4 @@ PAGES:
 46. Fixed outdated `.html` navigation links in `home.php`, `category.php`, and `about.php` by updating them to their corresponding `.php` pages. Corrected the Custom Gaming PCs link to `custom.php` to prevent 404 Not Found errors.
 47. BUG-003 – Fixed login session mismatch by updating `auth-guard.js` to validate authenticated PHP sessions through the new `session-check.php` endpoint instead of relying on browser local storage. Restored access to protected pages after successful login.
 48. BUG-004 – Fixed user profile information not saving to MySQL by connecting `profile.php` and `profile-settings.php` to the authenticated user's database record. Implemented persistent updates for personal details, shipping information, and password changes with current-password verification, secure hashing, and input validation.
+49. Updated custom.php so Custom Request allows the user to request for a specific build for a specific activity.
