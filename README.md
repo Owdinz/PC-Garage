@@ -76,3 +76,8 @@ PAGES:
 33. Refactored checkout.js to calculate live order total (#checkout-total-display), clear cart state on submit, and redirect to deliver.html.
 34. Connected product.html "Add to cart" button to CartManager.addItem() with user feedback alert.
 35. Connected custom-summary.html "Add Entire Rig to Cart" action to serialize hardware rig array into CartManager before navigating to cart.html.
+## 11/24/2026 (Tenorio)
+36. BUG-001 – Fixed login authentication bypass in `login.html` by removing automatic login state persistence and connecting credential validation to `login.php`.
+37. BUG-001 – Improved login error handling to keep unregistered users on the login page and display a sign-up instruction instead of redirecting to a separate PHP response page.
+38. BUG-002 – Connected the Sign Up form in `login.html` to `register.php`, adding input validation, duplicate email checking, password hashing, and database registration feedback.
+39. BUG-001 – Added custom inline validation messages for empty login fields and invalid email formats, replacing the browser's default warning popups.
