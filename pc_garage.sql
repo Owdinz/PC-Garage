@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2026 at 01:05 PM
+-- Generation Time: Nov 24, 2026 at 02:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,6 +44,18 @@ CREATE TABLE `cart_items` (
   `cart_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(100) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -144,10 +156,14 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`product_id`, `product_name`, `category`, `brand`, `description`, `price`, `stock_quantity`, `image_url`) VALUES
 (1, 'ASUS ROG STRIX SCAR 18', 'Laptop', 'ASUS', NULL, 219995.00, 10, NULL),
-(2, 'RTX 5090 Astral', 'GPU', 'ASUS', NULL, 449995.00, 5, NULL),
-(3, 'AMD Ryzen 7 7800X3D', 'CPU', 'AMD', NULL, 22500.00, 15, NULL),
-(4, 'Kingston Fury Beast DDR5', 'RAM', 'Kingston', NULL, 7990.00, 50, NULL),
-(5, 'Samsung 990 Pro 2TB', 'Storage', 'Samsung', NULL, 10500.00, 20, NULL);
+(2, 'RTX 5090 Astral', 'GPU', 'ASUS', NULL, 449995.00, 5, 'https://dynaquestpc.com/cdn/shop/files/240_cd13e66f-f0e7-4e8c-91ea-3f3b9713501b.png?v=1745902822&width=1080'),
+(3, 'AMD Ryzen 7 7800X3D', 'CPU', 'AMD', NULL, 22500.00, 15, 'https://m.media-amazon.com/images/I/51HqC0rU9HL._AC_UF894,1000_QL80_.jpg'),
+(4, 'Kingston Fury Beast DDR5', 'RAM', 'Kingston', NULL, 7990.00, 50, 'https://images-na.ssl-images-amazon.com/images/I/61yE2Ut4mBL.jpg'),
+(5, 'Samsung 990 Pro 2TB', 'Storage', 'Samsung', NULL, 10500.00, 20, 'https://gameone.ph/media/catalog/product/mpiowebpcache/d378a0f20f83637cdb1392af8dc032a2/s/a/samsung_2tb_990_pro_pcie_4.0_nvme_m.2_ssd-4_1.webp'),
+(6, 'Corsair RM750x', 'PSU', 'Corsair', 'Power Supply Unit', 7200.00, 10, 'https://assets.corsair.com/image/upload/f_auto,q_auto/content/CP-9020179-NA-RM750x-PSU-01.png'),
+(7, 'ASUS TUF B650M Plus', 'Motherboard', 'ASUS', 'AM5 Motherboard', 11500.00, 5, 'https://noveltycomputech.com/cdn/shop/files/tuf-gaming-b850m-plus-image-2.jpg?v=1752822179&width=1214'),
+(8, 'NZXT H5 Flow', 'PC Case', 'NZXT', 'Mid Tower Case', 4500.00, 8, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmmg0X0VxXX0AtuyLXy8OTP8AexqYF05Lh0BUv4ZjfRS_sSSsOQAR9yIN5&s=10'),
+(9, 'Logitech G304', 'Peripheral', 'Logitech', 'Wireless Gaming Mouse', 1795.00, 15, 'https://computerarenakh.com/image/catalog/1.DARA/0001-ROG%20RYUJIN%20III%202023/g304-black-original-cac.jpg');
 
 -- --------------------------------------------------------
 
@@ -209,6 +225,12 @@ ALTER TABLE `cart_items`
   ADD PRIMARY KEY (`cart_item_id`),
   ADD KEY `cart_id` (`cart_id`),
   ADD KEY `product_id` (`product_id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`category_id`);
 
 --
 -- Indexes for table `custom_builds`
@@ -284,6 +306,12 @@ ALTER TABLE `cart_items`
   MODIFY `cart_item_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `custom_builds`
 --
 ALTER TABLE `custom_builds`
@@ -317,7 +345,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `trade_requests`

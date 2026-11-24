@@ -1,3 +1,27 @@
+
+//php section
+<?php
+include 'db.php';
+
+$category = isset($_GET['category'])
+    ? $_GET['category']
+    : '';
+
+$sql = "SELECT * FROM products";
+
+if (!empty($category)) {
+    $stmt = $conn->prepare(
+        "SELECT * FROM products WHERE category = ?"
+    );
+    $stmt->bind_param("s", $category);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {
+    $result = $conn->query($sql);
+}
+?>
+
+//html section
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +32,7 @@
 </head>
 <body class="home-page">
   <header class="site-header">
-    <a class="brand" href="home.php" aria-label="PC-GARAGE home">
+    <a class="brand" href="home.html" aria-label="PC-GARAGE home">
       <span class="brand-mark">&#9670;</span>
       <span class="brand-name">PC-GARAGE</span>
       <small>PC COMPONENTS</small>
@@ -18,13 +42,13 @@
         <summary class="menu-toggle">Menu</summary>
         <div class="menu-links">
           <a href="home.php" class="active">Home</a>
-          <a href="product.php">Products</a>
-          <a href="shop-filtered.php">Filtered Shop</a>
-          <a href="custom.php">Custom Build</a>
-          <a href="about.php">About Us</a>
-          <a href="buy-sell.php">Buy and Sell</a>
-          <a href="cart.php">Cart</a>
-          <a href="profile.php">Profile</a>
+          <a href="product.html">Products</a>
+          <a href="category.php">Filtered Shop</a>
+          <a href="custom.html">Custom Build</a>
+          <a href="about.html">About Us</a>
+          <a href="buy-sell.html">Buy and Sell</a>
+          <a href="cart.html">Cart</a>
+          <a href="profile.html">Profile</a>
         </div>
       </details>
     </nav>
@@ -37,7 +61,7 @@
         <p>Subheading that sets up context, shares more info about the website, or generally gets people psyched to keep scrolling.</p>
         <div class="hero-actions">
         <a class="home-button" href="#categories">SHOP PARTS</a>
-        <a class="home-button" href="custom.php">CUSTOM BUILD</a>
+        <a class="home-button" href="custom.html">CUSTOM BUILD</a>
       </div>
       </div>
       <div class="home-hero-image">
@@ -56,14 +80,14 @@
       <p class="eyebrow">Browse by</p>
       <h2>TOP CATEGORIES</h2>
       <div class="category-grid">
-        <a href="#products" class="category-card"><img src="https://img.evetech.co.za/repository/ez/what-does-factory-overclocked-mean-and-should-you--banner.webp" alt="GPU" /><strong>GPU</strong><small>2 items</small></a>
-        <a href="#products" class="category-card"><img src="https://storage-asset.msi.com/global/picture/news/2026/psu/psu-20260720-2.jpg" alt="PSUs" /><strong>PSUs</strong><small>2 items</small></a>
-        <a href="#products" class="category-card"><img src="https://t3.ftcdn.net/jpg/20/00/09/50/360_F_2000095099_vTA9PvW2fsgOYHoKGO7l56eiPB5ahjAf.jpg" alt="Motherboards" /><strong>Motherboards</strong><small>2 items</small></a>
-        <a href="#products" class="category-card"><img src="https://www.seagate.com/content/dam/seagate/assets/products/enterprise-drives/images/enterprise-category-nytro-series.jpg" alt="Storage" /><strong>Storage</strong><small>2 items</small></a>
-        <a href="#products" class="category-card"><img src="https://www.caseking.de/on/demandware.static/-/Sites-master-catalog-caseking/default/dw4f7b4bf5/images/data/product/HPAM/HPAM-300/HPAM-300_fae6b013e79086b3dd69e8c8d4d208d77e2f3814.jpg" alt="CPUs" /><strong>CPUs</strong><small>2 items</small></a>
-        <a href="#products" class="category-card"><img src="https://images-na.ssl-images-amazon.com/images/I/81ov4cFmdaL.jpg" alt="RAM" /><strong>RAM</strong><small>2 items</small></a>
-        <a href="#products" class="category-card"><img src="https://blog.bestbuy.ca/wp-content/uploads/2021/03/PC-Cases-Buying-Guide-1.jpg" alt="PC Casings" /><strong>PC Casings</strong><small>2 items</small></a>
-        <a href="#products" class="category-card"><img src="https://m.media-amazon.com/images/I/71FcIWComYL._AC_UF1000,1000_QL80_.jpg" alt="PC Peripherals" /><strong>PC Peripherals</strong><small>2 items</small></a>
+        <a href="category.php?category=GPU" class="category-card"><img src="https://img.evetech.co.za/repository/ez/what-does-factory-overclocked-mean-and-should-you--banner.webp" alt="GPU" /><strong>GPU</strong><small>2 items</small></a>
+        <a href="category.php?category=PSU" class="category-card"><img src="https://storage-asset.msi.com/global/picture/news/2026/psu/psu-20260720-2.jpg" alt="PSUs" /><strong>PSUs</strong><small>2 items</small></a>
+        <a href="category.php?category=Motherboard" class="category-card"><img src="https://t3.ftcdn.net/jpg/20/00/09/50/360_F_2000095099_vTA9PvW2fsgOYHoKGO7l56eiPB5ahjAf.jpg" alt="Motherboards" /><strong>Motherboards</strong><small>2 items</small></a>
+        <a href="category.php?category=Storage" class="category-card"><img src="https://www.seagate.com/content/dam/seagate/assets/products/enterprise-drives/images/enterprise-category-nytro-series.jpg" alt="Storage" /><strong>Storage</strong><small>2 items</small></a>
+        <a href="category.php?category=CPU" class="category-card"><img src="https://www.caseking.de/on/demandware.static/-/Sites-master-catalog-caseking/default/dw4f7b4bf5/images/data/product/HPAM/HPAM-300/HPAM-300_fae6b013e79086b3dd69e8c8d4d208d77e2f3814.jpg" alt="CPUs" /><strong>CPUs</strong><small>2 items</small></a>
+        <a href="category.php?category=RAM" class="category-card"><img src="https://images-na.ssl-images-amazon.com/images/I/81ov4cFmdaL.jpg" alt="RAM" /><strong>RAM</strong><small>2 items</small></a>
+        <a href="category.php?category=PC Case" class="category-card"><img src="https://blog.bestbuy.ca/wp-content/uploads/2021/03/PC-Cases-Buying-Guide-1.jpg" alt="PC Casings" /><strong>PC Casings</strong><small>2 items</small></a>
+        <a href="category.php?category=Peripheral" class="category-card"><img src="https://m.media-amazon.com/images/I/71FcIWComYL._AC_UF1000,1000_QL80_.jpg" alt="PC Peripherals" /><strong>PC Peripherals</strong><small>2 items</small></a>
       </div>
     </section>
 <!-- Featured Products -->
@@ -93,7 +117,7 @@
       <div class="custom-copy">
         <h2>CUSTOM BUILD<br />EXPERIENCE</h2>
         <p>Elevated, curated, and thoughtfully designed with experience in every detail. Choose your components, get expert advice, and create a build that fits your style.</p>
-        <a class="home-button" href="custom.php">START BUILD</a>
+        <a class="home-button" href="custom.html">START BUILD</a>
       </div>
       <div class="custom-benefits">
         <div><strong>6 Month<br />Warranty</strong><small>Parts and labor covered</small></div>
@@ -110,21 +134,21 @@
     </div>
     <div>
       <h3>Shop</h3>
-      <a href="custom.php">Custom Gaming PCs</a>
-      <a href="product.php">Pre-Built Workstations</a>
-      <a href="shop-filtered.php">PC Components</a>
+      <a href="custom.html">Custom Gaming PCs</a>
+      <a href="product.html">Pre-Built Workstations</a>
+      <a href="shop-filtered.html">PC Components</a>
     </div>
     <div>
       <h3>Support</h3>
-      <a href="about.php">Contact Here &amp; FAQs</a>
-      <a href="deliver.php">Track Your Order</a>
-      <a href="about.php">Shipping &amp; Returns</a>
+      <a href="about.html">Contact Here &amp; FAQs</a>
+      <a href="deliver.html">Track Your Order</a>
+      <a href="about.html">Shipping &amp; Returns</a>
     </div>
     <div>
       <h3>Company</h3>
-      <a href="about.php">About PCGarage</a>
-      <a href="about.php">Careers</a>
-      <a href="about.php">Contact Us</a>
+      <a href="about.html">About PCGarage</a>
+      <a href="about.html">Careers</a>
+      <a href="about.html">Contact Us</a>
     </div>
   </footer>
 
