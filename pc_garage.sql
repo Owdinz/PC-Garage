@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2026 at 02:41 PM
+-- Generation Time: Nov 24, 2026 at 08:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -155,7 +155,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `category`, `brand`, `description`, `price`, `stock_quantity`, `image_url`) VALUES
-(1, 'ASUS ROG STRIX SCAR 18', 'Laptop', 'ASUS', NULL, 219995.00, 10, NULL),
+(1, 'ASUS ROG STRIX SCAR 18', 'Laptop', 'ASUS', NULL, 219995.00, 10, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUGclZjhga4WFae4jxj7h0FdLSO7ad3vnuGzeBKsyFUg&s'),
 (2, 'RTX 5090 Astral', 'GPU', 'ASUS', NULL, 449995.00, 5, 'https://dynaquestpc.com/cdn/shop/files/240_cd13e66f-f0e7-4e8c-91ea-3f3b9713501b.png?v=1745902822&width=1080'),
 (3, 'AMD Ryzen 7 7800X3D', 'CPU', 'AMD', NULL, 22500.00, 15, 'https://m.media-amazon.com/images/I/51HqC0rU9HL._AC_UF894,1000_QL80_.jpg'),
 (4, 'Kingston Fury Beast DDR5', 'RAM', 'Kingston', NULL, 7990.00, 50, 'https://images-na.ssl-images-amazon.com/images/I/61yE2Ut4mBL.jpg'),
@@ -205,7 +205,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `full_name`, `email`, `password_hash`, `phone`, `address`, `city`, `created_at`) VALUES
-(1, 'Gian Miguel', 'gian@gmail.com', '$2y$10$KkY8RI/W8rNvMUYslbyG/ezvZm1ZKtt62Otj4D5EJG6PLm/livlpa', NULL, NULL, NULL, '2026-11-10 11:40:53');
+(2, 'admin', 'admin@gmail.com', '$2y$10$i3eU.CMhMiVeYEqQOnEiDexvl7CxAuGhdzW5B2/hY/yLDFACqEgdi', NULL, NULL, NULL, '2026-11-24 15:53:30'),
+(3, 'Zeus', 'ZeusNasanKapeKo@yahoo.com', '$2y$10$QOAgwjYXH17yhxZOV0FThuz01QigSrWFEMhGL8KI19jA/bsbsyCly', '0912345678', 'olympus', 'greece', '2026-11-24 17:07:56');
 
 --
 -- Indexes for dumped tables
@@ -357,7 +358,7 @@ ALTER TABLE `trade_requests`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

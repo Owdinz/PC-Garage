@@ -39,7 +39,7 @@ if (!empty($category)) {
         <summary class="menu-toggle">Menu</summary>
         <div class="menu-links">
           <a href="home.php" class="active">Home</a>
-          <a href="product.php">Products</a>
+          <a href="category.php">Products</a>
           <a href="category.php">Filtered Shop</a>
           <a href="custom.php">Custom Build</a>
           <a href="about.php">About Us</a>
@@ -133,7 +133,7 @@ if (!empty($category)) {
       <h3>Shop</h3>
       <a href="custom.php">Custom Gaming PCs</a>
       <a href="product.php">Pre-Built Workstations</a>
-      <a href="shop-filtered.php">PC Components</a>
+      <a href="category.php">PC Components</a>
     </div>
     <div>
       <h3>Support</h3>

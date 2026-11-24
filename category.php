@@ -42,7 +42,7 @@ if (!empty($category)) {
         <summary class="menu-toggle">Menu</summary>
         <div class="menu-links">
           <a href="home.php">Home</a>
-          <a href="product.php">Main Shop</a>
+          <a href="category.php">Main Shop</a>
           <a href="category.php" class="active">Filtered Shop</a>
           <a href="custom.php">Custom Build</a>
           <a href="about.php">About Us</a>
@@ -55,7 +55,7 @@ if (!empty($category)) {
   </header>
 
 <!-- inserted -->
-<aside class="shop-sidebar">
+<form method="GET" action="category.php">
 ...
 </aside>
 
@@ -94,8 +94,14 @@ if (!empty($category)) {
         <label><input type="checkbox" name="brand" value="asus" /> ASUS</label>
       </div>
 
-      <button class="home-button" style="width:100%; text-align:center; margin-top:10px;">Apply Filters</button>
+      <button
+       type="submit"
+       class="home-button"
+       style="width:100%; text-align:center; margin-top:10px;">
+       Apply Filters
+      </button>
     </aside>
+    </form>
 
     <!-- Product Grid Content -->
     <section class="shop-content">
@@ -148,8 +154,8 @@ if (!empty($category)) {
           ₱<?php echo number_format($row['price'], 2); ?>
         </span>
 
-        <a href="product.php" class="home-button">
-          View Details
+        <a href="product.php?id=<?php echo $row['product_id']; ?>" class="home-button">
+         View Details
         </a>
 
       </div>
@@ -172,7 +178,7 @@ if (!empty($category)) {
     <div>
       <h3>Shop</h3>
       <a href="home.php">Home</a>
-      <a href="product.php">Products</a>
+      <a href="category.php">Products</a>
       <a href="custom.php">Custom PC Builder</a>
     </div>
     <div>

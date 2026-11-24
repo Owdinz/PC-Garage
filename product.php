@@ -1,9 +1,34 @@
+<?php
+include 'db.php';
+
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+
+$stmt = $conn->prepare(
+    "SELECT * FROM products WHERE product_id = ?"
+);
+
+$stmt->bind_param("i", $id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+
+$product = $result->fetch_assoc();
+
+if (!$product) {
+    die("Product not found.");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PCGarage | ASUS ROG Strix Scar 18</title>
+  <title>
+PCGarage |
+<?php echo htmlspecialchars($product['product_name']); ?>
+</title>
   <link rel="stylesheet" href="stylesheet.css" />
   <script src="cart-manager.js" defer></script>
 </head>
@@ -21,8 +46,8 @@
 
         <div class="menu-links">
           <a href="home.php">Home</a>
-          <a href="product.php">Products</a>
-          <a href="shop-filtered.php">Filtered Shop</a>
+          <a href="category.php">Products</a>
+          <a href="category.php">Filtered Shop</a>
           <a href="custom.php">Custom Build</a>
           <a href="about.php">About Us</a>
           <a href="buy-sell.php">Buy and Sell</a>
@@ -36,15 +61,31 @@
   <main>
     <section class="product-detail" aria-labelledby="product-title">
       <div class="hero-image">
-        <img src="https://dlcdnwebimgs.asus.com/files/media/202602/fd89bd74-4b0f-4c4c-84e0-7e6c8a9218a3/v2/images/fig-connectivity_1.webp" alt="ASUS ROG Strix Scar 18" />
-      </div>
+  <img
+      src="<?php echo !empty($product['image_url']) ? $product['image_url'] : 'placeholder.jpg'; ?>"
+      alt="<?php echo htmlspecialchars($product['product_name']); ?>"
+  />
+</div>
       <div class="product-info">
-        <h1 id="product-title">ASUS ROG STRIX SCAR 18</h1>
-        <p class="category">Gaming Laptop</p>
-        <p class="price">₱219,995.00</p>
-        <p class="description">
-          Engineered for top-tier competitive gaming. Features an 18-inch 240Hz ROG Nebula display, 14th Gen Intel Core i9 processor, NVIDIA GeForce RTX 4090 GPU, and ROG Intelligent Cooling with tri-fan technology.
-        </p>
+        <h1 id="product-title">
+    <?php echo htmlspecialchars($product['product_name']); ?>
+</h1>
+
+<p class="category">
+    <?php echo htmlspecialchars($product['category']); ?>
+</p>
+
+<p class="price">
+    ₱<?php echo number_format($product['price'], 2); ?>
+</p>
+
+<p class="description">
+    <?php
+    echo !empty($product['description'])
+        ? htmlspecialchars($product['description'])
+        : 'No description available.';
+    ?>
+</p>
         <button type="button">Add to cart</button>
         <p class="note">Includes 2-Year ASUS Global Warranty &amp; Free ROG Gaming Backpack.</p>
       </div>
@@ -120,8 +161,8 @@
     <div>
       <h3>Shop</h3>
       <a href="custom.php">Custom Gaming PCs</a>
-      <a href="product.php">Pre-Built Workstations</a>
-      <a href="shop-filtered.php">PC Components</a>
+      <a href="category.php">Pre-Built Workstations</a>
+      <a href="category.php">PC Components</a>
     </div>
     <div>
       <h3>Support</h3>
@@ -143,8 +184,9 @@
       const addToCartBtn = document.querySelector('.product-info button');
       if (addToCartBtn) {
         addToCartBtn.addEventListener('click', () => {
-          const title = document.getElementById('product-title')?.textContent.trim() || 'ASUS ROG STRIX SCAR 18';
-          const price = 219995.00;
+          const title = document.getElementById('product-title')?.textContent.trim();
+
+const price = <?php echo $product['price']; ?>;
           CartManager.addItem(title, price, 1);
           alert(`"${title}" added to your shopping cart!`);
         });
