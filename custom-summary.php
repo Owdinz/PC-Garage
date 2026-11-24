@@ -8,7 +8,7 @@
 </head>
 <body class="custom-summary-page">
   <header class="site-header">
-    <a class="brand" href="home.html" aria-label="PC-Garage home">
+    <a class="brand" href="home.php" aria-label="PC-Garage home">
       <span class="brand-mark">◆</span>
       <span class="brand-name">PC-GARAGE</span>
       <small>PC COMPONENTS</small>
@@ -18,15 +18,15 @@
       <details class="menu-dropdown">
         <summary class="menu-toggle">Menu</summary>
         <div class="menu-links">
-          <a href="home.html">Home</a>
-          <a href="product.html">Products</a>
-          <a href="shop-filtered.html">Filtered Shop</a>
-          <a href="custom.html">Custom Builder</a>
-          <a href="custom-summary.html" class="active">Build Summary</a>
-          <a href="about.html">About Us</a>
-          <a href="buy-sell.html">Buy and Sell</a>
-          <a href="cart.html">Cart</a>
-          <a href="profile.html">Profile</a>
+          <a href="home.php">Home</a>
+          <a href="product.php">Products</a>
+          <a href="shop-filtered.php">Filtered Shop</a>
+          <a href="custom.php">Custom Builder</a>
+          <a href="custom-summary.php" class="active">Build Summary</a>
+          <a href="about.php">About Us</a>
+          <a href="buy-sell.php">Buy and Sell</a>
+          <a href="cart.php">Cart</a>
+          <a href="profile.php">Profile</a>
         </div>
       </details>
     </nav>
@@ -38,7 +38,7 @@
         <h1>CUSTOM BUILD BREAKDOWN</h1>
         <p>Review hardware compatibility, thermal margins, and total system cost before adding to cart.</p>
       </div>
-      <a href="custom.html" class="home-button" style="background:#444;">← Edit Builder Parts</a>
+      <a href="custom.php" class="home-button" style="background:#444;">← Edit Builder Parts</a>
     </div>
 
     <!-- Compatibility Status Box -->
@@ -125,15 +125,15 @@
     </div>
     <div>
       <h3>Shop</h3>
-      <a href="home.html">Home</a>
-      <a href="product.html">Products</a>
-      <a href="custom.html">Custom PC Builder</a>
+      <a href="home.php">Home</a>
+      <a href="product.php">Products</a>
+      <a href="custom.php">Custom PC Builder</a>
     </div>
     <div>
       <h3>Support</h3>
-      <a href="about.html">About Us</a>
-      <a href="cart.html">Cart</a>
-      <a href="login.html">Login / Register</a>
+      <a href="about.php">About Us</a>
+      <a href="cart.php">Cart</a>
+      <a href="login.php">Login / Register</a>
     </div>
   </footer>
 
@@ -160,7 +160,7 @@
     });
 
     alert("Custom Build configuration added to your shopping cart!");
-    window.location.href = "cart.html";
+    window.location.href = "cart.php";
   }
 </script>
 </body>

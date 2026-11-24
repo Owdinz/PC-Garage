@@ -8,7 +8,7 @@
 </head>
 <body class="shop-filtered-page">
   <header class="site-header">
-    <a class="brand" href="home.html" aria-label="PC-Garage home">
+    <a class="brand" href="home.php" aria-label="PC-Garage home">
       <span class="brand-mark">◆</span>
       <span class="brand-name">PC-GARAGE</span>
       <small>PC COMPONENTS</small>
@@ -18,14 +18,14 @@
       <details class="menu-dropdown">
         <summary class="menu-toggle">Menu</summary>
         <div class="menu-links">
-          <a href="home.html">Home</a>
-          <a href="product.html">Main Shop</a>
-          <a href="shop-filtered.html" class="active">Filtered Shop</a>
-          <a href="custom.html">Custom Build</a>
-          <a href="about.html">About Us</a>
-          <a href="buy-sell.html">Buy &amp; Sell</a>
-          <a href="cart.html">Cart</a>
-          <a href="profile.html">Profile</a>
+          <a href="home.php">Home</a>
+          <a href="product.php">Main Shop</a>
+          <a href="shop-filtered.php" class="active">Filtered Shop</a>
+          <a href="custom.php">Custom Build</a>
+          <a href="about.php">About Us</a>
+          <a href="buy-sell.php">Buy &amp; Sell</a>
+          <a href="cart.php">Cart</a>
+          <a href="profile.php">Profile</a>
         </div>
       </details>
     </nav>
@@ -84,7 +84,7 @@
             <p class="part-desc">Extreme 4K gaming performance with DLSS 3.5 ray reconstruction technology.</p>
             <div class="part-bottom">
               <span class="part-price">₱62,500.00</span>
-              <a href="product.html" class="home-button">View Details</a>
+              <a href="product.php" class="home-button">View Details</a>
             </div>
           </div>
         </article>
@@ -98,7 +98,7 @@
             <p class="part-desc">The undisputed king of desktop gaming CPUs featuring 3D V-Cache.</p>
             <div class="part-bottom">
               <span class="part-price">₱22,500.00</span>
-              <a href="product.html" class="home-button">View Details</a>
+              <a href="product.php" class="home-button">View Details</a>
             </div>
           </div>
         </article>
@@ -112,7 +112,7 @@
             <p class="part-desc">Optimized high-bandwidth memory kit for AMD EXPO and Intel XMP 3.0.</p>
             <div class="part-bottom">
               <span class="part-price">₱7,500.00</span>
-              <a href="product.html" class="home-button">View Details</a>
+              <a href="product.php" class="home-button">View Details</a>
             </div>
           </div>
         </article>
@@ -127,15 +127,15 @@
     </div>
     <div>
       <h3>Shop</h3>
-      <a href="home.html">Home</a>
-      <a href="product.html">Products</a>
-      <a href="custom.html">Custom PC Builder</a>
+      <a href="home.php">Home</a>
+      <a href="product.php">Products</a>
+      <a href="custom.php">Custom PC Builder</a>
     </div>
     <div>
       <h3>Support</h3>
-      <a href="about.html">About Us</a>
-      <a href="login.html">Login / Sign-up</a>
-      <a href="cart.html">Cart</a>
+      <a href="about.php">About Us</a>
+      <a href="login.php">Login / Sign-up</a>
+      <a href="cart.php">Cart</a>
     </div>
   </footer>
 </body>

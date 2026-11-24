@@ -10,7 +10,7 @@
 <body>
 
     <header class="site-header">
-        <a href="home.html" class="brand" aria-label="PC-Garage home">
+        <a href="home.php" class="brand" aria-label="PC-Garage home">
             <span class="brand-mark">&#9670;</span>
             <span class="brand-name">PC-GARAGE</span>
             <small>SINCE 2020</small>
@@ -19,14 +19,14 @@
             <details class="menu-dropdown">
                 <summary class="menu-toggle">Menu</summary>
                 <div class="menu-links">
-                    <a href="home.html">Home</a>
-                    <a href="product.html">Products</a>
-                    <a href="shop-filtered.html">Filtered Shop</a>
-                    <a href="custom.html">Custom Build</a>
-                    <a href="about.html">About Us</a>
-                    <a href="buy-sell.html">Buy &amp; Sell</a>
-                    <a href="cart.html">Cart</a>
-                    <a href="profile.html" class="active">Profile</a>
+                    <a href="home.php">Home</a>
+                    <a href="product.php">Products</a>
+                    <a href="shop-filtered.php">Filtered Shop</a>
+                    <a href="custom.php">Custom Build</a>
+                    <a href="about.php">About Us</a>
+                    <a href="buy-sell.php">Buy &amp; Sell</a>
+                    <a href="cart.php">Cart</a>
+                    <a href="profile.php" class="active">Profile</a>
                 </div>
             </details>
         </nav>
@@ -52,30 +52,30 @@
             <div style="border: 1px solid var(--line); border-radius: 6px; padding: 18px; background: #fafafa;">
                 <h3 style="font-size: 14px; margin-bottom: 8px;">⚙️ Profile Settings</h3>
                 <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Update your personal info, shipping address, and password.</p>
-                <a href="profile-settings.html" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Edit Settings</a>
+                <a href="profile-settings.php" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Edit Settings</a>
             </div>
 
             <div style="border: 1px solid var(--line); border-radius: 6px; padding: 18px; background: #fafafa;">
                 <h3 style="font-size: 14px; margin-bottom: 8px;">🛒 Shopping Cart</h3>
                 <p style="font-size: 11px; color: #666; margin-bottom: 12px;">View reserved hardware items and proceed to checkout.</p>
-                <a href="cart.html" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">View Cart</a>
+                <a href="cart.php" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">View Cart</a>
             </div>
 
             <div style="border: 1px solid var(--line); border-radius: 6px; padding: 18px; background: #fafafa;">
                 <h3 style="font-size: 14px; margin-bottom: 8px;">📦 Order Tracking</h3>
                 <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Check delivery status and rider logs for active orders.</p>
-                <a href="deliver.html" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Track Orders</a>
+                <a href="deliver.php" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Track Orders</a>
             </div>
 
             <div style="border: 1px solid var(--line); border-radius: 6px; padding: 18px; background: #fafafa;">
                 <h3 style="font-size: 14px; margin-bottom: 8px;">🔄 Buy &amp; Sell / Trade-in</h3>
                 <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Submit used PC components for trade-in evaluation.</p>
-                <a href="buy-sell.html" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Trade-in Hub</a>
+                <a href="buy-sell.php" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Trade-in Hub</a>
             </div>
         </div>
 
         <div style="border-top: 1px solid var(--line); padding-top: 20px;">
-            <a href="login.html" onclick="localStorage.removeItem('isLoggedIn'); sessionStorage.removeItem('isLoggedIn');" style="color: #d9534f; font-weight: bold; text-decoration: none; font-size: 12px;">← Log Out</a>
+            <a href="login.php" onclick="localStorage.removeItem('isLoggedIn'); sessionStorage.removeItem('isLoggedIn');" style="color: #d9534f; font-weight: bold; text-decoration: none; font-size: 12px;">← Log Out</a>
         </div>
     </main>
 
@@ -86,21 +86,21 @@
         </div>
         <div>
             <h3>Shop</h3>
-            <a href="custom.html">Custom Gaming PCs</a>
-            <a href="product.html">Pre-Built Workstations</a>
-            <a href="shop-filtered.html">PC Components</a>
+            <a href="custom.php">Custom Gaming PCs</a>
+            <a href="product.php">Pre-Built Workstations</a>
+            <a href="shop-filtered.php">PC Components</a>
         </div>
         <div>
             <h3>Support</h3>
-            <a href="about.html">Help Center &amp; FAQs</a>
-            <a href="deliver.html">Track Your Order</a>
-            <a href="about.html">Shipping &amp; Returns</a>
+            <a href="about.php">Help Center &amp; FAQs</a>
+            <a href="deliver.php">Track Your Order</a>
+            <a href="about.php">Shipping &amp; Returns</a>
         </div>
         <div>
             <h3>Company</h3>
-            <a href="about.html">About PCGarage</a>
-            <a href="about.html">Careers</a>
-            <a href="about.html">Contact Us</a>
+            <a href="about.php">About PCGarage</a>
+            <a href="about.php">Careers</a>
+            <a href="about.php">Contact Us</a>
         </div>
     </footer>
     <div class="legal">&copy; 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences</div>

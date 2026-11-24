@@ -12,7 +12,7 @@
 
     <!-- SITE HEADER -->
     <header class="site-header">
-        <a href="home.html" class="brand" aria-label="PC-Garage home">
+        <a href="home.php" class="brand" aria-label="PC-Garage home">
             <span class="brand-mark">&#9670;</span>
             <span class="brand-name">PC-GARAGE</span>
             <small>SINCE 2020</small>
@@ -21,15 +21,15 @@
             <details class="menu-dropdown">
                 <summary class="menu-toggle">Menu</summary>
                 <div class="menu-links">
-                    <a href="home.html">Home</a>
-                    <a href="product.html">Products</a>
-                    <a href="shop-filtered.html">Filtered Shop</a>
-                    <a href="custom.html">Custom Build</a>
-                    <a href="about.html">About Us</a>
-                    <a href="buy-sell.html">Buy and Sell</a>
-                    <a href="cart.html">Cart</a>
-                    <a href="deliver.html" class="active">Order Status</a>
-                    <a href="profile.html">Profile</a>
+                    <a href="home.php">Home</a>
+                    <a href="product.php">Products</a>
+                    <a href="shop-filtered.php">Filtered Shop</a>
+                    <a href="custom.php">Custom Build</a>
+                    <a href="about.php">About Us</a>
+                    <a href="buy-sell.php">Buy and Sell</a>
+                    <a href="cart.php">Cart</a>
+                    <a href="deliver.php" class="active">Order Status</a>
+                    <a href="profile.php">Profile</a>
                 </div>
             </details>
         </nav>
@@ -148,21 +148,21 @@
             </div>
             <div class="footer-col">
                 <h3>Shop</h3>
-                <a href="custom.html">Custom Gaming PCs</a>
-                <a href="product.html">Pre-Built Workstations</a>
-                <a href="shop-filtered.html">PC Components</a>
+                <a href="custom.php">Custom Gaming PCs</a>
+                <a href="product.php">Pre-Built Workstations</a>
+                <a href="shop-filtered.php">PC Components</a>
             </div>
             <div class="footer-col">
                 <h3>Support</h3>
-                <a href="about.html">Help Center & FAQs</a>
-                <a href="login.html">Track Your Order</a>
-                <a href="about.html">Shipping & Returns</a>
+                <a href="about.php">Help Center & FAQs</a>
+                <a href="login.php">Track Your Order</a>
+                <a href="about.php">Shipping & Returns</a>
             </div>
             <div class="footer-col">
                 <h3>Company</h3>
-                <a href="about.html">About PCGarage</a>
-                <a href="about.html">Careers</a>
-                <a href="about.html">Contact Us</a>
+                <a href="about.php">About PCGarage</a>
+                <a href="about.php">Careers</a>
+                <a href="about.php">Contact Us</a>
             </div>
         </div>
         <div class="legal">&copy; 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences</div>

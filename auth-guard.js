@@ -1,12 +1,12 @@
 // auth-guard.js
 (function () {
   const protectedPages = [
-    'buy-sell.html',
-    'cart.html',
-    'profile.html',
-    'profile-settings.html',
-    'checkout.html',
-    'deliver.html'
+    'buy-sell.php',
+    'cart.php',
+    'profile.php',
+    'profile-settings.php',
+    'checkout.php',
+    'deliver.php'
   ];
 
   const currentPage = window.location.pathname.split('/').pop();
@@ -16,7 +16,7 @@
 
     if (!isLoggedIn) {
       alert('Access Restricted: Please log in or register to access this page.');
-      window.location.href = 'login.html';
+      window.location.href = 'login.php';
     }
   }
 })();

@@ -38,11 +38,11 @@ Add description for each product.
 CSS:
 stylesheet.css
 PAGES:
-1. Home.html - done already connected to Product
-2. product.php - done, linked to home.html
+1. home.php - done already connected to Product
+2. product.php - done, linked to home.php
 3. cart.php - done, connected to stylesheet.css and navigation
-5. about.html - done, connected to stylesheet.css and navigation
-6. login.html - done, includes log in and sign-up sections, connected to navigation
+5. about.php - done, connected to stylesheet.css and navigation
+6. login.php - done, includes log in and sign-up sections, connected to navigation
 ## 10/20/2026
 7. added cart.js done
 8. fixed nav bar to hamburger button done
@@ -54,7 +54,7 @@ PAGES:
 13. removed images folder
 ## 11/06/2026 (Aytona)
 14. cart.php - fixed and connected to cart.js done
-15. checkout.html - connected to checkout.js done
+15. checkout.php - connected to checkout.js done
 16. cart.htm - connected to checkout done
 17. custom.html - added and connected to its own js.
 ## 11/10/2026 (Gundran)
@@ -65,8 +65,8 @@ PAGES:
 22. Standardized currency formatting across all pages to PHP (`₱`).
 23. Fixed broken footer link routes (`custom-build.html` → `custom.html`).
 24. Standardized <details class="menu-dropdown"> hamburger header navigation across all 13 HTML pages to fulfill global navigation requirements.
-25. Repaired broken anchor routes and CTA buttons in home.html to point directly to custom.html.
-26. Cleaned up stray character encoding tags in product.php footer and repaired broken footer links in checkout.html.
+25. Repaired broken anchor routes and CTA buttons in home.php to point directly to custom.html.
+26. Cleaned up stray character encoding tags in product.php footer and repaired broken footer links in checkout.php.
 27. Fixed malformed nested DOM structures and added global deleteItem() function in custom.js to eliminate runtime script errors.
 28. Refactored checkout.js to support dynamic order summary recalculation alongside the undo-toast item deletion system.
 29. Standardized hardware appraisal values and active trade request history in buy-sell.html to PHP (₱).
@@ -77,9 +77,9 @@ PAGES:
 34. Connected product.php "Add to cart" button to CartManager.addItem() with user feedback alert.
 35. Connected custom-summary.html "Add Entire Rig to Cart" action to serialize hardware rig array into CartManager before navigating to cart.php.
 ## 11/24/2026 (Tenorio)
-36. BUG-001 – Fixed login authentication bypass in `login.html` by removing automatic login state persistence and connecting credential validation to `login.php`.
+36. BUG-001 – Fixed login authentication bypass in `login.php` by removing automatic login state persistence and connecting credential validation to `login.php`.
 37. BUG-001 – Improved login error handling to keep unregistered users on the login page and display a sign-up instruction instead of redirecting to a separate PHP response page.
-38. BUG-002 – Connected the Sign Up form in `login.html` to `register.php`, adding input validation, duplicate email checking, password hashing, and database registration feedback.
+38. BUG-002 – Connected the Sign Up form in `login.php` to `register.php`, adding input validation, duplicate email checking, password hashing, and database registration feedback.
 39. BUG-001 – Added custom inline validation messages for empty login fields and invalid email formats, replacing the browser's default warning popups.
 40. Converted `cart.html` to `cart.php` while preserving the existing shopping cart interface and functionality.
 41. Converted `product.html` to `product.php` while preserving the product catalog and Add to Cart functionality.

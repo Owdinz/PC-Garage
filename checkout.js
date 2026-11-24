@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       alert('Order placed successfully! Redirecting to live order tracking...');
       CartManager.clearCart();
-      window.location.href = 'deliver.html';
+      window.location.href = 'deliver.php';
     });
   }
 
