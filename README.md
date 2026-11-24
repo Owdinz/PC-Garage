@@ -84,3 +84,6 @@ PAGES:
 40. Converted `cart.html` to `cart.php` while preserving the existing shopping cart interface and functionality.
 41. Converted `product.html` to `product.php` while preserving the product catalog and Add to Cart functionality.
 42. Updated navigation links and redirects to support the converted PHP pages.
+43. Converted the remaining PC-Garage HTML pages into PHP files while preserving the existing layouts and functionality.
+44. Restructured the login system by separating the login interface (`login.php`) from its authentication backend (`login-handler.php`).
+45. Updated navigation links and JavaScript redirects to reference PHP pages, resolving 404 Not Found errors caused by outdated HTML paths.
