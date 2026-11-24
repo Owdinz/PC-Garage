@@ -1,5 +1,3 @@
-
-//php section
 <?php
 include 'db.php';
 
@@ -21,7 +19,6 @@ if (!empty($category)) {
 }
 ?>
 
-//html section
 <!DOCTYPE html>
 <html lang="en">
 <head>

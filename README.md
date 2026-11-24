@@ -88,3 +88,4 @@ PAGES:
 44. Restructured the login system by separating the login interface (`login.php`) from its authentication backend (`login-handler.php`).
 45. Updated navigation links and JavaScript redirects to reference PHP pages, resolving 404 Not Found errors caused by outdated HTML paths.
 46. Fixed outdated `.html` navigation links in `home.php`, `category.php`, and `about.php` by updating them to their corresponding `.php` pages. Corrected the Custom Gaming PCs link to `custom.php` to prevent 404 Not Found errors.
+47. BUG-003 – Fixed login session mismatch by updating `auth-guard.js` to validate authenticated PHP sessions through the new `session-check.php` endpoint instead of relying on browser local storage. Restored access to protected pages after successful login.
