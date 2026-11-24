@@ -81,3 +81,6 @@ PAGES:
 37. BUG-001 – Improved login error handling to keep unregistered users on the login page and display a sign-up instruction instead of redirecting to a separate PHP response page.
 38. BUG-002 – Connected the Sign Up form in `login.html` to `register.php`, adding input validation, duplicate email checking, password hashing, and database registration feedback.
 39. BUG-001 – Added custom inline validation messages for empty login fields and invalid email formats, replacing the browser's default warning popups.
+40. Converted `cart.html` to `cart.php` while preserving the existing shopping cart interface and functionality.
+41. Converted `product.html` to `product.php` while preserving the product catalog and Add to Cart functionality.
+42. Updated navigation links and redirects to support the converted PHP pages.
