@@ -1,5 +1,60 @@
+<?php
+session_start();
+
+require_once "db.php";
+
+// Require a valid PHP login session.
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Retrieve the currently logged-in user.
+$user_id = (int) $_SESSION["user_id"];
+
+$stmt = $conn->prepare(
+    "SELECT user_id, full_name, email
+     FROM users
+     WHERE user_id = ?
+     LIMIT 1"
+);
+
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
+
+$stmt->close();
+
+// Handle accounts that no longer exist.
+if (!$user) {
+    $_SESSION = [];
+    session_destroy();
+
+    header("Location: login.php");
+    exit;
+}
+
+// Escape text before displaying it in HTML.
+$full_name = htmlspecialchars(
+    $user["full_name"],
+    ENT_QUOTES,
+    "UTF-8"
+);
+
+$email = htmlspecialchars(
+    $user["email"],
+    ENT_QUOTES,
+    "UTF-8"
+);
+
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +62,7 @@
     <script src="auth-guard.js" defer></script>
     <link rel="stylesheet" href="stylesheet.css">
 </head>
+
 <body>
 
     <header class="site-header">
@@ -35,48 +91,73 @@
     <main style="max-width: 900px; margin: 36px auto;">
         <h1 style="font-size: 28px; margin-bottom: 20px;">User Profile</h1>
 
-        <div style="border: 2px solid #00a8ff; border-radius: 6px; padding: 24px; margin-bottom: 30px; display: flex; align-items: center; gap: 24px;">
-            <div style="width: 80px; height: 80px; border-radius: 50%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; flex-shrink: 0;">
+        <div
+            style="border: 2px solid #00a8ff; border-radius: 6px; padding: 24px; margin-bottom: 30px; display: flex; align-items: center; gap: 24px;">
+            <div
+                style="width: 80px; height: 80px; border-radius: 50%; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 32px; font-weight: bold; flex-shrink: 0;">
                 PC
             </div>
             <div>
-                <h2 style="font-size: 20px; margin-bottom: 4px;">Welcome back, Tech Gamer!</h2>
-                <p style="margin-bottom: 4px; color: #555;">Email: gamer@pcgarage.com</p>
-                <p style="margin-bottom: 0; color: #888; font-size: 12px;">Member since: 2026</p>
+                <h2 style="font-size: 20px; margin-bottom: 4px;">
+                    Welcome back, <?= $full_name ?>!
+                </h2>
+
+                <p style="margin-bottom: 4px; color: #555;">
+                    Email: <?= $email ?>
+                </p>
+
+                <p style="margin-bottom: 0; color: #888; font-size: 12px;">
+                    Member since: 2026
+                </p>
             </div>
         </div>
 
         <h2 style="font-size: 18px; margin-bottom: 16px;">Account Navigation</h2>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px;">
+        <div
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 40px;">
             <div style="border: 1px solid var(--line); border-radius: 6px; padding: 18px; background: #fafafa;">
                 <h3 style="font-size: 14px; margin-bottom: 8px;">⚙️ Profile Settings</h3>
-                <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Update your personal info, shipping address, and password.</p>
-                <a href="profile-settings.php" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Edit Settings</a>
+                <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Update your personal info, shipping
+                    address, and password.</p>
+                <a href="profile-settings.php"
+                    style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Edit
+                    Settings</a>
             </div>
 
             <div style="border: 1px solid var(--line); border-radius: 6px; padding: 18px; background: #fafafa;">
                 <h3 style="font-size: 14px; margin-bottom: 8px;">🛒 Shopping Cart</h3>
-                <p style="font-size: 11px; color: #666; margin-bottom: 12px;">View reserved hardware items and proceed to checkout.</p>
-                <a href="cart.php" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">View Cart</a>
+                <p style="font-size: 11px; color: #666; margin-bottom: 12px;">View reserved hardware items and proceed
+                    to checkout.</p>
+                <a href="cart.php"
+                    style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">View
+                    Cart</a>
             </div>
 
             <div style="border: 1px solid var(--line); border-radius: 6px; padding: 18px; background: #fafafa;">
                 <h3 style="font-size: 14px; margin-bottom: 8px;">📦 Order Tracking</h3>
-                <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Check delivery status and rider logs for active orders.</p>
-                <a href="deliver.php" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Track Orders</a>
+                <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Check delivery status and rider logs for
+                    active orders.</p>
+                <a href="deliver.php"
+                    style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Track
+                    Orders</a>
             </div>
 
             <div style="border: 1px solid var(--line); border-radius: 6px; padding: 18px; background: #fafafa;">
                 <h3 style="font-size: 14px; margin-bottom: 8px;">🔄 Buy &amp; Sell / Trade-in</h3>
-                <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Submit used PC components for trade-in evaluation.</p>
-                <a href="buy-sell.php" style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Trade-in Hub</a>
+                <p style="font-size: 11px; color: #666; margin-bottom: 12px;">Submit used PC components for trade-in
+                    evaluation.</p>
+                <a href="buy-sell.php"
+                    style="display: inline-block; padding: 6px 14px; background: #000; color: #fff; text-decoration: none; border-radius: 4px; font-size: 11px;">Trade-in
+                    Hub</a>
             </div>
         </div>
 
         <div style="border-top: 1px solid var(--line); padding-top: 20px;">
-            <a href="login.php" onclick="localStorage.removeItem('isLoggedIn'); sessionStorage.removeItem('isLoggedIn');" style="color: #d9534f; font-weight: bold; text-decoration: none; font-size: 12px;">← Log Out</a>
-        </div>
+<a href="logout.php"
+   style="color: #d9534f; font-weight: bold; text-decoration: none; font-size: 12px;">
+    ← Log Out
+</a>        </div>
     </main>
 
     <footer class="site-footer">
@@ -103,7 +184,9 @@
             <a href="about.php">Contact Us</a>
         </div>
     </footer>
-    <div class="legal">&copy; 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences</div>
+    <div class="legal">&copy; 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie
+        Preferences</div>
 
 </body>
+
 </html>
