@@ -1,3 +1,16 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+if (empty($_SESSION['cart_csrf'])) {
+    $_SESSION['cart_csrf'] = bin2hex(random_bytes(32));
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +21,18 @@
     <script src="auth-guard.js" defer></script>
     <script src="cart-manager.js" defer></script>
     <script src="cart.js" defer></script>
+
+
+<meta
+    name="cart-csrf-token"
+    content="<?= htmlspecialchars(
+        $_SESSION['cart_csrf'],
+        ENT_QUOTES,
+        'UTF-8'
+    ) ?>"
+>
+
+
 </head>
 <body>
 
@@ -22,7 +47,7 @@
                 <summary class="menu-toggle">Menu</summary>
                 <div class="menu-links">
                     <a href="home.php">Home</a>
-                    <a href="category.php">Products</a>
+                    <a href="category.php">CONTINUE SHOPPING</a>
                     <a href="shop-filtered.php">Filtered Shop</a>
                     <a href="custom.php">Custom Build</a>
                     <a href="about.php">About Us</a>
@@ -37,65 +62,25 @@
     <main style="max-width: 900px; margin: 30px auto;">
         <h1 style="font-family: monospace; font-size: 32px; margin-bottom: 20px;">Shopping Cart</h1>
 
-        <!-- Cart Items Container -->
-        <div id="cart-items-list" style="border: 2px solid #00a8ff; border-radius: 4px; padding: 15px; margin-bottom: 25px; display: flex; flex-direction: column; gap: 10px;">
-            
-            <div class="cart-item" data-name="ASUS ROG RTX 5090 Astral" data-price="449995.00" style="border: 1px solid #666; border-radius: 20px; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 12px;">
-                <div>
-                    <div><strong>ITEM:</strong> ASUS ROG RTX 5090 Astral</div>
-                    <div><strong>PRICE:</strong> ₱449,995.00</div>
-                </div>
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <input type="number" class="quantity" value="1" min="1" style="border: 1px solid #666; border-radius: 12px; padding: 3px 10px; width: 50px; text-align: center;">
-                    <button type="button" onclick="deleteItem(this)" style="border: 1px solid #666; background: transparent; color: #000; border-radius: 12px; padding: 3px 15px; cursor: pointer;">Remove</button>
-                </div>
-            </div>
 
-            <div class="cart-item" data-name="Deepcool Wind Blade 120mm" data-price="990.00" style="border: 1px solid #666; border-radius: 20px; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 12px;">
-                <div>
-                    <div><strong>ITEM:</strong> Deepcool Wind Blade 120mm</div>
-                    <div><strong>PRICE:</strong> ₱990.00</div>
-                </div>
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <input type="number" class="quantity" value="6" min="1" style="border: 1px solid #666; border-radius: 12px; padding: 3px 10px; width: 50px; text-align: center;">
-                    <button type="button" onclick="deleteItem(this)" style="border: 1px solid #666; background: transparent; color: #000; border-radius: 12px; padding: 3px 15px; cursor: pointer;">Remove</button>
-                </div>
-            </div>
+<!-- Cart Items Container -->
+<div
+    id="cart-items-list"
+    style="
+        border: 2px solid #00a8ff;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 25px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    "
+>
+    <p style="text-align: center; padding: 20px;">
+        Loading your shopping cart...
+    </p>
+</div>
 
-            <div class="cart-item" data-name="ASUS PRIME B760M-A WIFI Micro-ATX Motherboard" data-price="8967.00" style="border: 1px solid #666; border-radius: 20px; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 12px;">
-                <div>
-                    <div><strong>ITEM:</strong> ASUS PRIME B760M-A WIFI Micro-ATX Motherboard</div>
-                    <div><strong>PRICE:</strong> ₱8,967.00</div>
-                </div>
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <input type="number" class="quantity" value="1" min="1" style="border: 1px solid #666; border-radius: 12px; padding: 3px 10px; width: 50px; text-align: center;">
-                    <button type="button" onclick="deleteItem(this)" style="border: 1px solid #666; background: transparent; color: #000; border-radius: 12px; padding: 3px 15px; cursor: pointer;">Remove</button>
-                </div>
-            </div>
-
-            <div class="cart-item" data-name="KINGSTON 8GB DDR4 3200MHZ FURY BEAST RAM" data-price="23600.00" style="border: 1px solid #666; border-radius: 20px; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 12px;">
-                <div>
-                    <div><strong>ITEM:</strong> KINGSTON 8GB DDR4 3200MHZ FURY BEAST RAM</div>
-                    <div><strong>PRICE:</strong> ₱23,600.00</div>
-                </div>
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <input type="number" class="quantity" value="4" min="1" style="border: 1px solid #666; border-radius: 12px; padding: 3px 10px; width: 50px; text-align: center;">
-                    <button type="button" onclick="deleteItem(this)" style="border: 1px solid #666; background: transparent; color: #000; border-radius: 12px; padding: 3px 15px; cursor: pointer;">Remove</button>
-                </div>
-            </div>
-
-            <div class="cart-item" data-name="Intel® Core™ Ultra 9 285K Desktop Processor" data-price="40150.00" style="border: 1px solid #666; border-radius: 20px; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 12px;">
-                <div>
-                    <div><strong>ITEM:</strong> Intel® Core™ Ultra 9 285K Desktop Processor</div>
-                    <div><strong>PRICE:</strong> ₱40,150.00</div>
-                </div>
-                <div style="display: flex; gap: 10px; align-items: center;">
-                    <input type="number" class="quantity" value="1" min="1" style="border: 1px solid #666; border-radius: 12px; padding: 3px 10px; width: 50px; text-align: center;">
-                    <button type="button" onclick="deleteItem(this)" style="border: 1px solid #666; background: transparent; color: #000; border-radius: 12px; padding: 3px 15px; cursor: pointer;">Remove</button>
-                </div>
-            </div>
-
-        </div>
 
         <!-- Order Summary -->
         <div style="border: 1px solid #666; border-radius: 4px; padding: 20px; font-family: monospace;">

@@ -10,7 +10,18 @@ if (
   exit;
 }
 
+// Start PHP session for cart authentication.
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+// Generate CSRF token for cart operations.
+if (empty($_SESSION['cart_csrf'])) {
+  $_SESSION['cart_csrf'] = bin2hex(random_bytes(32));
+}
+
 require_once 'db.php';
+
 
 $id = (int) $_GET['id'];
 
@@ -38,6 +49,13 @@ if (!$product) {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="cart-csrf-token" content="<?= htmlspecialchars(
+    $_SESSION['cart_csrf'],
+    ENT_QUOTES,
+    'UTF-8'
+  ) ?>" />
+
   <title>
     PCGarage |
     <?php echo htmlspecialchars($product['product_name']); ?>
@@ -61,7 +79,7 @@ if (!$product) {
         <div class="menu-links">
           <a href="home.php">Home</a>
           <a href="category.php">Products</a>
-          <a href="shop-filtered.php">Filtered Shop</a> 
+          <a href="shop-filtered.php">Filtered Shop</a>
           <a href="custom.php">Custom Build</a>
           <a href="about.php">About Us</a>
           <a href="buy-sell.php">Buy and Sell</a>
@@ -201,20 +219,37 @@ if (!$product) {
   <div class="legal">© 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences
   </div>
 
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const addToCartBtn = document.querySelector('.product-info button');
-      if (addToCartBtn) {
-        addToCartBtn.addEventListener('click', () => {
-          const title = document.getElementById('product-title')?.textContent.trim();
 
-          const price = <?php echo $product['price']; ?>;
-          CartManager.addItem(title, price, 1);
-          alert(`"${title}" added to your shopping cart!`);
-        });
-      }
+      if (!addToCartBtn) return;
+
+      addToCartBtn.addEventListener('click', async () => {
+        const productId = <?= (int) $product['product_id'] ?>;
+
+        addToCartBtn.disabled = true;
+
+        try {
+          await CartManager.addProduct(productId, 1);
+
+          alert('Product added to your shopping cart!');
+        } catch (error) {
+          if (error.message.includes('sign in')) {
+            alert('Please sign in before adding products.');
+            window.location.href = 'login.php';
+            return;
+          }
+
+          alert(error.message || 'Unable to add product.');
+        } finally {
+          addToCartBtn.disabled = false;
+        }
+      });
     });
   </script>
+
 </body>
 
 </html>
