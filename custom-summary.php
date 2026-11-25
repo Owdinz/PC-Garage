@@ -19,7 +19,7 @@
         <summary class="menu-toggle">Menu</summary>
         <div class="menu-links">
           <a href="home.php">Home</a>
-          <a href="product.php">Products</a>
+          <a href="category.php">Products</a>
           <a href="shop-filtered.php">Filtered Shop</a>
           <a href="custom.php">Custom Builder</a>
           <a href="custom-summary.php" class="active">Build Summary</a>
@@ -126,7 +126,7 @@
     <div>
       <h3>Shop</h3>
       <a href="home.php">Home</a>
-      <a href="product.php">Products</a>
+      <a href="category.php">Products</a>
       <a href="custom.php">Custom PC Builder</a>
     </div>
     <div>

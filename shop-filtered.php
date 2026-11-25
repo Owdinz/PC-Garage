@@ -128,7 +128,7 @@
     <div>
       <h3>Shop</h3>
       <a href="home.php">Home</a>
-      <a href="product.php">Products</a>
+      <a href="category.php">Products</a>
       <a href="custom.php">Custom PC Builder</a>
     </div>
     <div>

@@ -22,7 +22,7 @@
                 <summary class="menu-toggle">Menu</summary>
                 <div class="menu-links">
                     <a href="home.php">Home</a>
-                    <a href="product.php">Products</a>
+                    <a href="category.php">Products</a>
                     <a href="buy-sell.php">Buy and Sell</a>
                     <a href="profile.php">Profile</a>
                     <a class="cart-button" href="cart.php">Cart</a>

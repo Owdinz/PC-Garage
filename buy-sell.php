@@ -179,7 +179,7 @@ $conn->close();
 
                 <div class="menu-links">
                     <a href="home.php">Home</a>
-                    <a href="product.php">Products</a>
+                    <a href="category.php">Products</a>
                     <a href="shop-filtered.php">Filtered Shop</a>
                     <a href="custom.php">Custom Build</a>
                     <a href="about.php">About Us</a>

@@ -1,10 +1,22 @@
 <?php
-include 'db.php';
+// Redirect visitors to the product catalog
+// when no valid product ID is provided.
+if (
+  !isset($_GET['id']) ||
+  !ctype_digit((string) $_GET['id']) ||
+  (int) $_GET['id'] < 1
+) {
+  header("Location: category.php");
+  exit;
+}
 
-$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+require_once 'db.php';
+
+$id = (int) $_GET['id'];
+
 
 $stmt = $conn->prepare(
-    "SELECT * FROM products WHERE product_id = ?"
+  "SELECT * FROM products WHERE product_id = ?"
 );
 
 $stmt->bind_param("i", $id);
@@ -15,23 +27,25 @@ $result = $stmt->get_result();
 $product = $result->fetch_assoc();
 
 if (!$product) {
-    die("Product not found.");
+  die("Product not found.");
 }
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
-PCGarage |
-<?php echo htmlspecialchars($product['product_name']); ?>
-</title>
+    PCGarage |
+    <?php echo htmlspecialchars($product['product_name']); ?>
+  </title>
   <link rel="stylesheet" href="stylesheet.css" />
   <script src="cart-manager.js" defer></script>
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="home.php" aria-label="PC-Garage home">
@@ -47,12 +61,12 @@ PCGarage |
         <div class="menu-links">
           <a href="home.php">Home</a>
           <a href="category.php">Products</a>
-          <a href="category.php">Filtered Shop</a>
+          <a href="shop-filtered.php">Filtered Shop</a> 
           <a href="custom.php">Custom Build</a>
           <a href="about.php">About Us</a>
           <a href="buy-sell.php">Buy and Sell</a>
           <a href="cart.php">Cart</a>
-          <a class="profile-button" href="profile.php">Profile</a>
+          <a href="profile.php">Profile</a>
         </div>
       </details>
     </nav>
@@ -61,31 +75,29 @@ PCGarage |
   <main>
     <section class="product-detail" aria-labelledby="product-title">
       <div class="hero-image">
-  <img
-      src="<?php echo !empty($product['image_url']) ? $product['image_url'] : 'placeholder.jpg'; ?>"
-      alt="<?php echo htmlspecialchars($product['product_name']); ?>"
-  />
-</div>
+        <img src="<?php echo !empty($product['image_url']) ? $product['image_url'] : 'placeholder.jpg'; ?>"
+          alt="<?php echo htmlspecialchars($product['product_name']); ?>" />
+      </div>
       <div class="product-info">
         <h1 id="product-title">
-    <?php echo htmlspecialchars($product['product_name']); ?>
-</h1>
+          <?php echo htmlspecialchars($product['product_name']); ?>
+        </h1>
 
-<p class="category">
-    <?php echo htmlspecialchars($product['category']); ?>
-</p>
+        <p class="category">
+          <?php echo htmlspecialchars($product['category']); ?>
+        </p>
 
-<p class="price">
-    ₱<?php echo number_format($product['price'], 2); ?>
-</p>
+        <p class="price">
+          ₱<?php echo number_format($product['price'], 2); ?>
+        </p>
 
-<p class="description">
-    <?php
-    echo !empty($product['description'])
-        ? htmlspecialchars($product['description'])
-        : 'No description available.';
-    ?>
-</p>
+        <p class="description">
+          <?php
+          echo !empty($product['description'])
+            ? htmlspecialchars($product['description'])
+            : 'No description available.';
+          ?>
+        </p>
         <button type="button">Add to cart</button>
         <p class="note">Includes 2-Year ASUS Global Warranty &amp; Free ROG Gaming Backpack.</p>
       </div>
@@ -97,7 +109,9 @@ PCGarage |
       <div class="product-grid">
         <article class="card">
           <div class="card-image">
-            <img src="https://benson.ph/cdn/shop/files/laptop-alienware-ac16250-gallery-1.webp?v=1772515719&amp;width=1920" alt="Dell Alienware 16 Aurora" />
+            <img
+              src="https://benson.ph/cdn/shop/files/laptop-alienware-ac16250-gallery-1.webp?v=1772515719&amp;width=1920"
+              alt="Dell Alienware 16 Aurora" />
           </div>
           <h3>Dell Alienware 16 Aurora</h3>
           <p>Intel i9, RTX 4080, Legend 3 cooling design &amp; customizable RGB.</p>
@@ -106,7 +120,9 @@ PCGarage |
 
         <article class="card">
           <div class="card-image">
-            <img src="https://laptopmedia.com/wp-content/uploads/2025/01/PREDATOR-HELIOS-18-AI_PH18-73-01-e1736510435924.jpg" alt="Acer Predator Helios" />
+            <img
+              src="https://laptopmedia.com/wp-content/uploads/2025/01/PREDATOR-HELIOS-18-AI_PH18-73-01-e1736510435924.jpg"
+              alt="Acer Predator Helios" />
           </div>
           <h3>Acer Predator Helios</h3>
           <p>14th Gen Intel i7, RTX 4070, and 5th Gen AeroBlade 3D cooling fans.</p>
@@ -124,7 +140,8 @@ PCGarage |
 
         <article class="card">
           <div class="card-image">
-            <img src="https://geekawhat.com/wp-content/uploads/2025/03/FI_ASUS-TUF-Gaming-RX-9070-XT-OC.jpg" alt="Radeon RX 9070 TUF" />
+            <img src="https://geekawhat.com/wp-content/uploads/2025/03/FI_ASUS-TUF-Gaming-RX-9070-XT-OC.jpg"
+              alt="Radeon RX 9070 TUF" />
           </div>
           <h3>Radeon RX 9070 TUF</h3>
           <p>Military-grade components, dual-ball bearings, and optimized 1440p/4K performance.</p>
@@ -133,7 +150,9 @@ PCGarage |
 
         <article class="card">
           <div class="card-image">
-            <img src="https://gameone.ph/media/catalog/product/mpiowebpcache/d378a0f20f83637cdb1392af8dc032a2/l/o/logitech_g304_x_superlight_lightspeed-mixpic1.webp" alt="Logitech G304 mouse" />
+            <img
+              src="https://gameone.ph/media/catalog/product/mpiowebpcache/d378a0f20f83637cdb1392af8dc032a2/l/o/logitech_g304_x_superlight_lightspeed-mixpic1.webp"
+              alt="Logitech G304 mouse" />
           </div>
           <h3>Logitech G304</h3>
           <p>LIGHTSPEED wireless mouse with HERO 12K sensor and 250-hour battery life.</p>
@@ -142,7 +161,9 @@ PCGarage |
 
         <article class="card">
           <div class="card-image">
-            <img src="https://s24.q4cdn.com/131595232/files/doc_multimedia/Low_Resolution_JPG-G435_MC_Key_Visual_03_16x9_Poster.jpg" alt="Logitech G435 headset" />
+            <img
+              src="https://s24.q4cdn.com/131595232/files/doc_multimedia/Low_Resolution_JPG-G435_MC_Key_Visual_03_16x9_Poster.jpg"
+              alt="Logitech G435 headset" />
           </div>
           <h3>Logitech G435</h3>
           <p>Ultra-lightweight wireless gaming headset with low-latency Bluetooth and beamforming mics.</p>
@@ -177,7 +198,8 @@ PCGarage |
       <a href="about.php">Contact Us</a>
     </div>
   </footer>
-  <div class="legal">© 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences</div>
+  <div class="legal">© 2026 PCGarage. All rights reserved. | Privacy Policy | Terms of Service | Cookie Preferences
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -186,7 +208,7 @@ PCGarage |
         addToCartBtn.addEventListener('click', () => {
           const title = document.getElementById('product-title')?.textContent.trim();
 
-const price = <?php echo $product['price']; ?>;
+          const price = <?php echo $product['price']; ?>;
           CartManager.addItem(title, price, 1);
           alert(`"${title}" added to your shopping cart!`);
         });
@@ -194,4 +216,5 @@ const price = <?php echo $product['price']; ?>;
     });
   </script>
 </body>
+
 </html>
