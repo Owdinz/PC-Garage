@@ -92,3 +92,5 @@ PAGES:
 48. BUG-004 – Fixed user profile information not saving to MySQL by connecting `profile.php` and `profile-settings.php` to the authenticated user's database record. Implemented persistent updates for personal details, shipping information, and password changes with current-password verification, secure hashing, and input validation.
 49. BUG-005 – Implemented database-backed hardware appraisal submissions using `trade-submit.php` and `trade-preview.php`. Added dynamic trade history, seller-specific access protection, and a hardware preview displaying submitted details, estimated value, and appraisal status.
 50. BUG-006 – Fixed Products navigation across 13 PHP pages by redirecting catalog links to `category.php`, preventing "Product not found" errors caused by missing product IDs. Updated `product.php` to preserve individual product details, corrected Filtered Shop navigation, and improved Profile link visibility while maintaining existing PHP and MySQL functionality.
+## 11/24/25
+51. FILTER UPDATED. (branch - category-test)
