@@ -27,7 +27,7 @@
                     <a href="about.php">About Us</a>
                     <a href="buy-sell.php">Buy and Sell</a>
                     <a href="cart.php">Cart</a>
-                    <a class="profile-button" href="login.php">Login / Sign-up</a>
+                    <a href="login.php">Login / Sign-up</a>
                 </div>
             </details>
         </nav>
