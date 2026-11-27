@@ -1,5 +1,22 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+if (!isset($_SESSION['user_id'])) {
+  header('Location: login.php');
+  exit;
+}
+
+if (empty($_SESSION['cart_csrf'])) {
+  $_SESSION['cart_csrf'] = bin2hex(random_bytes(32));
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +25,15 @@
   <script src="auth-guard.js" defer></script>
   <script src="cart-manager.js" defer></script>
   <script src="checkout.js" defer></script>
+
+  <meta name="cart-csrf-token" content="<?= htmlspecialchars(
+    $_SESSION['cart_csrf'],
+    ENT_QUOTES,
+    'UTF-8'
+  ) ?>">
+
 </head>
+
 <body>
   <header class="site-header">
     <a class="brand" href="home.php" aria-label="PC-Garage home">
@@ -48,7 +73,8 @@
               <input id="contact" name="contact" type="tel" autocomplete="tel" placeholder="09145125123" required>
 
               <label for="email">EMAIL ADDRESS</label>
-              <input id="email" name="email" type="email" autocomplete="email" placeholder="john.doe@gmail.com" required>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="john.doe@gmail.com"
+                required>
             </div>
           </section>
 
@@ -56,10 +82,12 @@
             <h2 id="shipping-title">Shipping Info</h2>
             <div class="input-panel">
               <label for="address">COMPLETE ADDRESS</label>
-              <input id="address" name="address" autocomplete="street-address" placeholder="14 BATUMBAKAL ST. MANILA PHILIPPINES" required>
+              <input id="address" name="address" autocomplete="street-address"
+                placeholder="14 BATUMBAKAL ST. MANILA PHILIPPINES" required>
 
               <label for="postal">POSTAL CODE</label>
-              <input id="postal" name="postalCode" autocomplete="postal-code" inputmode="numeric" placeholder="1000" required>
+              <input id="postal" name="postalCode" autocomplete="postal-code" inputmode="numeric" placeholder="1000"
+                required>
 
               <label class="notes-label" for="notes">DELIVERY NOTES</label>
               <textarea id="notes" name="notes" rows="2" placeholder="e.g. Leave with guard if unavailable"></textarea>
@@ -71,86 +99,61 @@
           <fieldset>
             <legend>Shipping Method</legend>
             <div class="option-grid shipping-options">
-              <label class="option"><input type="radio" name="shippingMethod" value="standard" checked><span>Standard Delivery</span></label>
-              <label class="option"><input type="radio" name="shippingMethod" value="express"><span>Express Delivery</span></label>
-              <label class="option"><input type="radio" name="shippingMethod" value="pickup"><span>Store Pickup</span></label>
+              <label class="option"><input type="radio" name="shippingMethod" value="standard" checked><span>Standard
+                  Delivery</span></label>
+              <label class="option"><input type="radio" name="shippingMethod" value="express"><span>Express
+                  Delivery</span></label>
+              <label class="option" style="opacity:0.5;">
+                <input type="radio" name="shippingMethod" value="pickup" disabled>
+                <span>Store Pickup <small>Coming Soon</small></span>
+              </label>
             </div>
           </fieldset>
 
+
           <fieldset>
             <legend>Payment Method</legend>
+
             <div class="option-grid payment-options">
-              <label class="option"><input type="radio" name="paymentMethod" value="cod" checked><span>Cash On Delivery<small>Pay when received</small></span></label>
-              <label class="option"><input type="radio" name="paymentMethod" value="gcash"><span>GCash / Maya<small>Secure e-wallet payment</small></span></label>
-              <label class="option"><input type="radio" name="paymentMethod" value="card"><span>Debit / Credit Card<small>Pay securely via card</small></span></label>
-              <label class="option"><input type="radio" name="paymentMethod" value="wallet"><span>PCGarage Wallet<small>Receive tokens and vouchers</small></span></label>
+              <label class="option">
+                <input type="radio" name="paymentMethod" value="cod" checked required>
+                <span>
+                  Cash On Delivery
+                  <small>Pay when your order is delivered</small>
+                </span>
+              </label>
+
+              <label class="option" style="opacity:0.5;">
+                <input type="radio" name="paymentMethod" value="gcash" disabled>
+                <span>GCash / Maya <small>Coming Soon</small></span>
+              </label>
+
+              <label class="option" style="opacity:0.5;">
+                <input type="radio" name="paymentMethod" value="card" disabled>
+                <span>Debit / Credit Card <small>Coming Soon</small></span>
+              </label>
+
+              <label class="option" style="opacity:0.5;">
+                <input type="radio" name="paymentMethod" value="wallet" disabled>
+                <span>PCGarage Wallet <small>Coming Soon</small></span>
+              </label>
             </div>
           </fieldset>
+
         </div>
       </div>
 
       <section class="orders" aria-labelledby="orders-title">
         <h2 id="orders-title">YOUR ORDERS</h2>
+
         <div class="order-list">
-
-          <article class="order-item" data-name="NVIDIA GeForce RTX 5090" data-price="426509.00">
-            <div class="item-details">
-              <p><span>ITEM:</span> NVIDIA GeForce RTX 5090</p>
-              <p><span>PRICE:</span> ₱426,509.00</p>
-            </div>
-            <div class="item-actions">
-              <input type="number" class="quantity" min="1" max="99" value="1" aria-label="Quantity for NVIDIA GeForce RTX 5090">
-              <button type="button" class="delete-button" aria-label="Delete NVIDIA GeForce RTX 5090">DELETE</button>
-            </div>
-          </article>
-
-          <article class="order-item" data-name="Deepcool Wind Blade 120mm" data-price="990.00">
-            <div class="item-details">
-              <p><span>ITEM:</span> Deepcool Wind Blade 120mm</p>
-              <p><span>PRICE:</span> ₱990.00</p>
-            </div>
-            <div class="item-actions">
-              <input type="number" class="quantity" min="1" max="99" value="6" aria-label="Quantity for Deepcool Wind Blade 120mm">
-              <button type="button" class="delete-button" aria-label="Delete Deepcool Wind Blade 120mm">DELETE</button>
-            </div>
-          </article>
-
-          <article class="order-item" data-name="ASUS PRIME B760M-A WIFI Micro-ATX Motherboard" data-price="8967.00">
-            <div class="item-details">
-              <p><span>ITEM:</span> ASUS PRIME B760M-A WIFI Micro-ATX Motherboard</p>
-              <p><span>PRICE:</span> ₱8,967.00</p>
-            </div>
-            <div class="item-actions">
-              <input type="number" class="quantity" min="1" max="99" value="1" aria-label="Quantity for ASUS PRIME motherboard">
-              <button type="button" class="delete-button" aria-label="Delete ASUS PRIME motherboard">DELETE</button>
-            </div>
-          </article>
-
-          <article class="order-item" data-name="KINGSTON 8GB DDR4 3200MHZ FURY BEAST RAM" data-price="23600.00">
-            <div class="item-details">
-              <p><span>ITEM:</span> KINGSTON 8GB DDR4 3200MHZ FURY BEAST RAM</p>
-              <p><span>PRICE:</span> ₱23,600.00</p>
-            </div>
-            <div class="item-actions">
-              <input type="number" class="quantity" min="1" max="99" value="4" aria-label="Quantity for KINGSTON RAM">
-              <button type="button" class="delete-button" aria-label="Delete KINGSTON RAM">DELETE</button>
-            </div>
-          </article>
-
-          <article class="order-item" data-name="Intel® Core™ Ultra 9 285K Desktop Processor" data-price="40150.00">
-            <div class="item-details">
-              <p><span>ITEM:</span> Intel® Core™ Ultra 9 285K Desktop Processor</p>
-              <p><span>PRICE:</span> ₱40,150.00</p>
-            </div>
-            <div class="item-actions">
-              <input type="number" class="quantity" min="1" max="99" value="1" aria-label="Quantity for Intel Core Ultra 9 processor">
-              <button type="button" class="delete-button" aria-label="Delete Intel Core Ultra 9 processor">DELETE</button>
-            </div>
-          </article>
-
-          <p class="empty-cart" hidden>Your cart is empty. Add items before placing an order.</p>
+          <p class="empty-cart">
+            Loading your shopping cart...
+          </p>
         </div>
-        <div style="border: 1px solid #666; border-radius: 6px; padding: 16px; margin-top: 16px; font-family: monospace;">
+
+        <div
+          style="border: 1px solid #666; border-radius: 6px; padding: 16px; margin-top: 16px; font-family: monospace;">
           <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 16px;">
             <span>TOTAL ORDER AMOUNT:</span>
             <span id="checkout-total-display">₱0.00</span>
@@ -160,6 +163,11 @@
         <div class="checkout-actions">
           <a class="action-button" href="cart.php">← GO BACK</a>
           <button class="action-button" type="submit" id="secure-order">SECURE ORDER</button>
+
+          <button type="button" id="check-previous-order" class="action-button" hidden style="margin-top: 12px;">
+            CHECK PREVIOUS ORDER
+          </button>
+
         </div>
         <p id="order-status" role="status" hidden></p>
       </section>
@@ -198,13 +206,15 @@
           <a href="about.php">Contact Us</a>
         </section>
       </div>
-      <p class="copyright">© 2026 PCGarage. All rights reserved. <span>| Privacy Policy | Terms of Service | Cookie Preferences</span></p>
+      <p class="copyright">© 2026 PCGarage. All rights reserved. <span>| Privacy Policy | Terms of Service | Cookie
+          Preferences</span></p>
     </div>
   </footer>
   <!-- Toast Undo Notification -->
-<div id="toast-notification" class="toast-notification" role="status" aria-live="polite" hidden>
-  <span id="toast-message">Item removed from cart.</span>
-  <button type="button" id="undo-button" class="undo-button">UNDO</button>
-</div>
+  <div id="toast-notification" class="toast-notification" role="status" aria-live="polite" hidden>
+    <span id="toast-message">Item removed from cart.</span>
+    <button type="button" id="undo-button" class="undo-button">UNDO</button>
+  </div>
 </body>
+
 </html>
